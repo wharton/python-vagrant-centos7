@@ -1,0 +1,42 @@
+Welcome to Python 3 on CentOS 7.2!
+
+Try out Django:
+
+           **********IMPORTANT!**********
+(0) On your host machine, add the following to the hosts file:
+    192.168.99.100	vagrant.example.com
+    Mac hosts file location: /private/etc/hosts
+    Windows hosts file location: %SystemRoot%\system32\drivers\etc\hosts
+    If you haven't done so, make sure your SSH key in Vagrant is in stash. If it isn't:
+    $ ssh-keygen -t rsa -C "youremail@yourmailserver.com"
+    <Hit enter four times>
+    $ cat /home/vagrant/id_rsa.pub
+    <Copy and paste that value into your git host, such as GitHub>
+
+(1) Create a virtualenv:
+    $ mkvirtualenv myproject
+(2) Install Django:
+    $ pip install django
+(3) Move to your Apache home directory:
+    $ cd /vagrant/html
+(4) Start your Django project:
+    $ django-admin startproject myproject
+(5) Enter your project and fire up runserver:
+    $ cd myproject
+    $ python manage.py runserver 0:8000
+(6) Try making your first Django Project; please note, we have completed several of the steps necessary, as you will see:
+    https://tutorial.djangogirls.org/en/
+
+The '/vagrant' directory is shared with your host machine in the location where you ran 'vagrant up'.
+
+Some aliases have been created for you in ~/.bashrc:
+
+(1) Alias for 'python manage.py runserver':
+    $ runserver
+(2) Color highlighting 'cat':
+    $ ccat manage.py
+
+Shutting down your virtualenv and Vagrant:
+
+$ deactivate
+$ exit
