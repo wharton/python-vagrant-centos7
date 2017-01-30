@@ -20,7 +20,7 @@ Try out Django:
 (3) Move to your Apache home directory:
     $ cd /vagrant/html
 (4) Start your Django project:
-    $ django-admin startproject myproject
+    $ django-admin.py startproject myproject
 (5) Enter your project and fire up runserver:
     $ cd myproject
     $ python manage.py runserver 0:8000
