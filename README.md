@@ -1,5 +1,4 @@
-# A CentOS 7.2 Vagrant Box with Python 3.6
-
+# A CentOS 7.2 Vagrant Box with Python 3.5
 * Apache 2.4, with mod_wsgi (Django)
 * FreeTDS drivers for MS SQL Server
 * PostgreSQL Drivers & Server
