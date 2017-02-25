@@ -115,9 +115,6 @@ cp /vagrant/examples/motd.txt /etc/motd
 # symlink /vagrant/html to /var/www/html
 ln -fs /vagrant/html /var/www/html
 
-# Copy example apache conf file
-cp /vagrant/examples/apache-config-shib.conf /etc/httpd/conf.d/
-
 # Fix for slow networking due to dns proxy
 echo "options single-request-reopen" >>/etc/resolv.conf
 echo "RES_OPTIONS=single-request-reopen" >>/etc/sysconfig/network
