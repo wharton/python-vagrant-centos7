@@ -12,10 +12,10 @@ Django versions 1.8 and greater are supported. Python 3.5 was first supported in
 
 ## Compatibility
 
-* Tested with Vagrant 1.8.4:
-    * Mac: https://releases.hashicorp.com/vagrant/1.8.4/vagrant_1.8.4.dmg
-    * Windows: https://releases.hashicorp.com/vagrant/1.8.4/vagrant_1.8.4.msi
-* Tested with VirtualBox up to 5.2.4:
+* Tested with Vagrant 1.9.1:
+    * Mac: https://releases.hashicorp.com/vagrant/1.9.1/vagrant_1.9.1.dmg
+    * Windows: https://releases.hashicorp.com/vagrant/1.9.1/vagrant_1.9.1.msi
+* Tested with VirtualBox up to 5.0.24:
     * Mac: http://download.virtualbox.org/virtualbox/5.0.24/VirtualBox-5.0.24-1083.6-OSX.dmg
     * Windows: http://download.virtualbox.org/virtualbox/5.0.24/VirtualBox-5.0.24-1083.6-Win.exe
 * Tested on: OS/X Yosemite, and El Capitan. MS Windows 7, 8, and 10.
