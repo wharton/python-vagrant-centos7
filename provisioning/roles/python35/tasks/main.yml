@@ -1,0 +1,5 @@
+---
+- name: Install Python 3.5 from IUS
+  yum:
+    name: 'python35u'
+    state: latest

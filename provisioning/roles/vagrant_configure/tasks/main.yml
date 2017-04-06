@@ -1,10 +1,4 @@
 ---
-- name: Stop iptables and remove from startup
-  service:
-    name: iptables
-    state: stopped
-    enabled: no
-
 # Disable fastestmirror plugin for apache - for faster installs on vagrant
 - name: Replace enabled line in fastestmirror.conf
   lineinfile:

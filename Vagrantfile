@@ -1,8 +1,8 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
 Vagrant.configure("2") do |config|
-    config.vm.box = "bento/centos-7.3"
-    config.vm.box_url = "https://atlas.hashicorp.com/bento/boxes/centos-7.3/versions/2.3.4/providers/virtualbox.box"
+    config.vm.box = "bento/centos-7.2"
+    config.vm.box_url = "https://atlas.hashicorp.com/bento/boxes/centos-7.2/versions/2.2.3/providers/virtualbox.box"
     config.vm.synced_folder ".", "/vagrant", id: "vagrant-root", :mount_options => ["dmode=777","fmode=777"]
 
     config.vm.provider "virtualbox" do |v|
@@ -21,8 +21,7 @@ Vagrant.configure("2") do |config|
     config.vm.network "forwarded_port", guest: 8100, host: 8100, auto_correct: true
     config.vm.hostname = "vagrant.example.com"
 
-    # config.vm.provision "shell", path: "bootstrap.sh"
-    config.vm.provision "ansible" do |ansible|
+    config.vm.provision "ansible_local" do |ansible|
         ansible.verbose = "v"
         ansible.playbook = "provisioning/vagrant_playbook.yml"
     end
