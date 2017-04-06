@@ -1,0 +1,26 @@
+---
+- name: Stop iptables and remove from startup
+  service:
+    name: iptables
+    state: stopped
+    enabled: no
+
+# Disable fastestmirror plugin for apache - for faster installs on vagrant
+- name: Replace enabled line in fastestmirror.conf
+  lineinfile:
+    dest: /etc/yum/pluginconf.d/fastestmirror.conf
+    regexp: "^enabled=1"
+    line: "enabled=0"
+
+- name: Vagrant networking; resolve.conf option
+  lineinfile:
+    dest: /etc/resolv.conf
+    state: present
+    line: "options single-request-reopen"
+
+- name: Vagrant networking; sysconfig network option
+  lineinfile:
+    dest: /etc/sysconfig/network
+    state: present
+    line: "RES_OPTIONS=single-request-reopen"
+  notify: restart network
