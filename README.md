@@ -48,6 +48,14 @@ $ vagrant up
 $ vagrant ssh
 ```
 
+## Specifying a Host Name
+
+By default, the host name will be set to `vagrant.example.com`. You can specify a host name like this:
+
+``` bash
+$ VAGRANT_HOSTNAME="vagrant.my.domain.com" vagrant up
+```
+
 ## Try out Django:
 
 ``` bash

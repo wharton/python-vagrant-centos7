@@ -1,5 +1,3 @@
-# -*- mode: ruby -*-
-# vi: set ft=ruby :
 Vagrant.configure("2") do |config|
     config.vm.box = "bento/centos-7.2"
     config.vm.box_url = "https://atlas.hashicorp.com/bento/boxes/centos-7.2/versions/2.2.3/providers/virtualbox.box"
@@ -19,7 +17,9 @@ Vagrant.configure("2") do |config|
     config.vm.network "forwarded_port", guest: 8000, host: 8000, auto_correct: true
     config.vm.network "forwarded_port", guest: 8080, host: 8080, auto_correct: true
     config.vm.network "forwarded_port", guest: 8100, host: 8100, auto_correct: true
-    config.vm.hostname = "vagrant.example.com"
+
+    ENV['VAGRANT_HOSTNAME'] = "vagrant.example.com" if ENV['VAGRANT_HOSTNAME'].nil?
+    config.vm.hostname = ENV['VAGRANT_HOSTNAME']
 
     config.vm.provision "ansible_local" do |ansible|
         ansible.verbose = "v"
