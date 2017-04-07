@@ -1,0 +1,5 @@
+---
+- name: Install pip for Python 3.5 from IUS
+  yum:
+    name: 'python35u-pip'
+    state: latest

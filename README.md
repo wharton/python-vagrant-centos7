@@ -1,4 +1,4 @@
-# A CentOS 7.2 Vagrant Box with Python 3.5
+# A CentOS 7.3 Vagrant Box with Python 3.5 via Ansible
 * Apache 2.4, with mod_wsgi (Django)
 * FreeTDS drivers for MS SQL Server
 * PostgreSQL Drivers & Server
@@ -122,5 +122,4 @@ vagrant=# \q
 Contributors:
 
 * Tim Allen (tallen@wharton.upenn.edu)
-* Gavin Burress (bug@wharton.upenn.edu)
 * Dave Roller (roller@wharton.upenn.edu)

@@ -2,6 +2,9 @@
 .gitconfig
 .ssh/*
 
+# Ansible retries
+provisioning/vagrant_playbook.retry
+
 # Python bytecode:
 *.py[co]
 
