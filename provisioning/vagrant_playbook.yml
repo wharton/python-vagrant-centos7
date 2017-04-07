@@ -5,6 +5,8 @@
   roles:
     - { role: vagrant_configure, tags: ['setup'] }
     - { role: remote_repo_configure, tags: ['remote_repo'] }
+    - { role: python27_pip, tags: ['python'] }
+    - { role: python27_virtualenvwrapper, tags: ['python'] }
     - { role: python35, tags: ['python'] }
     - { role: python35_pip, tags: ['python'] }
     - { role: yum_update, tags: ['yum_update'] }

@@ -1,0 +1,5 @@
+---
+- name: Install pip for Python 2.7 from RHEL
+  yum:
+    name: 'python2-pip'
+    state: latest
