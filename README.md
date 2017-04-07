@@ -56,25 +56,31 @@ By default, the host name will be set to `vagrant.example.com`. You can specify 
 $ VAGRANT_HOSTNAME="vagrant.my.domain.com" vagrant up
 ```
 
-## Try out Django:
+You can also add the host name to your computer's `hosts` file. Your `hosts` file should be located at:
+
+* Mac / Linux: /etc/hosts
+* Windows: %SystemRoot%\system32\drivers\etc\hosts
+
+Add this line (with the appropriate host name, if you changed it):
 
 ``` bash
-           **********IMPORTANT!**********
-(0) On your host machine, add the following to the hosts file:
-    192.168.99.100	vagrant.example.com
-    Mac hosts file location: /private/etc/hosts
-    Windows hosts file location: %SystemRoot%\system32\drivers\etc\hosts
-
-(1) SSH into your Vagrant guest VM for further instructions (type "menu" to bring them up again if you need them):
-    $ vagrant ssh
-    $ menu
+192.168.99.100  vagrant.example.com
 ```
 
-Shutting it down:
+## Setting Up PostgreSQL & Getting Started
+
+On your Vagrant box, a script has been provided to install PostgreSQL Server 9.6 and set up
+the `vagrant` user as superuser alongside the system `postgres` user.
 
 ```
-$ deactivate
-$ exit
+$ sudo /vagrant/install_postgres.sh
+$ psql
+psql (9.6.2)
+Type "help" for help.
+
+vagrant=# \?
+...
+vagrant=# \q
 ```
 
 ## Creating ERDs of Django Models
@@ -111,23 +117,7 @@ In Windows 10, the "World Wide Web Publishing Service" automatically starts on p
 * Click the "Stop" button.
 * Click "OK".
 
-## Setting Up PostgreSQL & Getting Started
-
-This will install PostgreSQL Server 9.5 and set up the 'vagrant' user as superuser alongside the system 'postgres' user.
-
-```
-$ cd /vagrant/examples
-$ sudo ./install_postgres.sh
-$ psql
-psql (9.6.2)
-Type "help" for help.
-
-vagrant=# \?
-...
-vagrant=# \q
-```
-
-Contributors:
+Authors:
 
 * Tim Allen (tallen@wharton.upenn.edu)
 * Dave Roller (roller@wharton.upenn.edu)
