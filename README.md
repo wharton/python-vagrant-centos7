@@ -43,7 +43,7 @@ Make a copy of the repo and bring up the virtual development environment. The "v
 
 ``` bash
 $ git clone https://github.com/wharton/python-vagrant-centos7.git
-$ cd python-dev-centos7
+$ cd python-vagrant-centos7
 $ vagrant up
 $ vagrant ssh
 ```
@@ -73,7 +73,7 @@ On your Vagrant box, a script has been provided to install PostgreSQL Server 9.6
 the `vagrant` user as superuser alongside the system `postgres` user.
 
 ```
-$ sudo /vagrant/install_postgres.sh
+$ sudo /vagrant/assets/install_postgres.sh
 $ psql
 psql (9.6.2)
 Type "help" for help.
@@ -87,7 +87,7 @@ vagrant=# \q
 
 The `django-extensions` app can build handy Entity Relationship Diagrams for Django apps, even your entire project. The pre-requisites for the Python packages are included with this Vagrant box.
 
-![An example ERD with three Django apps.](users-faculty-courses.png)
+![An example ERD with three Django apps.](assets/users-faculty-courses.png)
 
 First, install `django-extensions` and `pygraphviz`:
 

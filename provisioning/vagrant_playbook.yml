@@ -10,4 +10,6 @@
     - { role: python27_virtualenvwrapper, tags: ['python'] }
     - { role: python35, tags: ['python'] }
     - { role: python35_pip, tags: ['python'] }
+    - { role: httpd, tags: ['httpd'] }
+    - { role: httpd_mod_wsgi, tags: ['python', 'httpd'] }
     - { role: yum_update, tags: ['yum_update'] }
