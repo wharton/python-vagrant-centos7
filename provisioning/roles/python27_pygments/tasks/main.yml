@@ -1,0 +1,12 @@
+---
+- name: Install Pygments for Python 3.5
+  pip:
+    name: Pygments
+
+- name: Set 'ccat' alias in global bashrc
+  lineinfile:
+    dest: /etc/bashrc
+    line: "{{ item.line }}"
+  with_items:
+    - { line: '# The line below allows syntax highlighting for files with the command "ccat".' }
+    - { line: "alias ccat='pygmentize -O style=monokai -f terminal -g'" }
