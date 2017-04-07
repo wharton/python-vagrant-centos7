@@ -1,0 +1,11 @@
+---
+- name: Install Apache httpd 2.4 from RHEL
+  yum:
+    name: 'httpd'
+    state: latest
+
+- name: Make sure httpd is started at boot.
+  service:
+    name: httpd
+    enabled: true
+    state: started

@@ -1,0 +1,11 @@
+---
+- name: Install mod_wsgi for Apache httpd with Python 3.5 from IUS
+  yum:
+    name: 'python35u-mod_wsgi'
+    state: latest
+
+- name: Make sure httpd is started at boot.
+  service:
+    name: httpd
+    enabled: true
+    state: restarted
