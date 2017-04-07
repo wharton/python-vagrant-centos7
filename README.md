@@ -119,7 +119,7 @@ This will install PostgreSQL Server 9.5 and set up the 'vagrant' user as superus
 $ cd /vagrant/examples
 $ sudo ./install_postgres.sh
 $ psql
-psql (9.5.2)
+psql (9.6.2)
 Type "help" for help.
 
 vagrant=# \?
