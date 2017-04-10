@@ -1,0 +1,5 @@
+---
+- name: install EPEL release package for RHEL
+  yum:
+    name: epel-release
+    state: latest

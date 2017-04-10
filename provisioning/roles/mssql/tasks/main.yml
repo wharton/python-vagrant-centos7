@@ -1,0 +1,25 @@
+---
+- name: Install MS's ODBC Driver Repo
+  get_url:
+    url: https://packages.microsoft.com/config/rhel/7/prod.repo
+    dest: /etc/yum.repos.d/mssql-release.repo
+
+- name: Ensure utf16 packages are not installed to avoid conflicts
+  yum:
+    name: "{{ item }} "
+    state: absent
+  with_items:
+    - unixODBC-utf16
+    - unixODBC-utf16-devel
+
+- name: Install Microsoft ODBC Driver 13.1 for SQL Server for Linux
+  yum:
+    name: msodbcsql-13.1.4.0-1.x86_64
+    state: present
+  environment:
+    ACCEPT_EULA: "Y"
+
+- name: Install unixODBC
+  yum:
+    name: unixODBC-devel
+    state: present

@@ -1,5 +1,9 @@
 ---
 - name: Install Python 3.5 from IUS
   yum:
-    name: 'python35u'
+    name: '{{ item }}'
     state: latest
+  with_items:
+    - python35u
+    - python35u-pip
+    - python35u-devel

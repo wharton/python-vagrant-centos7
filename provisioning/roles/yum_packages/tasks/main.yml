@@ -1,0 +1,16 @@
+---
+- name: Install development tools with yum
+  yum:
+    name: "@Development tools"
+    state: present
+- name: Install dependencies for pip installs with yum
+  yum: 
+    name: '{{ item }}'
+    state: present
+  with_items:
+   # - unixODBC-devel
+   # - freetds-devel
+   - zlib-devel
+   - sqlite-devel
+   - bzip2-devel
+   - graphviz-devel
