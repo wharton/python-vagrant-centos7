@@ -14,8 +14,12 @@
 
 - name: Install Microsoft ODBC Driver 13.1 for SQL Server for Linux
   yum:
-    name: msodbcsql-13.1.4.0-1.x86_64
+    name: "{{ item }}"
     state: present
+  with_items:
+    - msodbcsql-13.1.4.0-1
+    - mssql-tools-14.0.3.0-1
+    - unixODBC-devel
   environment:
     ACCEPT_EULA: "Y"
 

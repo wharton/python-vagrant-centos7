@@ -2,7 +2,7 @@
 - name: Install Python 3.5 from IUS
   yum:
     name: '{{ item }}'
-    state: latest
+    state: present
   with_items:
     - python35u
     - python35u-pip

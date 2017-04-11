@@ -2,7 +2,7 @@
 - name: Install pip for Python 2.7 from RHEL
   yum:
     name: 'python2-pip'
-    state: latest
+    state: present
 - name: Install Pygments for Python 3.5
   pip:
     name: Pygments

@@ -4,12 +4,16 @@
   become: yes
   roles:
     - { role: vagrant_configure, tags: ['setup'] }
+    - { role: firewalld, tags: ['firewalld'] }
     - { role: repository_epel, tags: ['yum'] }
     - { role: repository_ius, tags: ['yum'] }
     - { role: python27, tags: ['python'] }
     - { role: python35, tags: ['python'] }
     - { role: httpd, tags: ['httpd'] }
     - { role: httpd_mod_wsgi, tags: ['python', 'httpd'] }
-    - { role: mssql, tags: ['freetds'] }
+    - { role: freetds, tags: ['sql', 'freetds'] }
+    # The following line will use the Microsoft driver
+    # We're using FreeTDS.
+    # - { role: mssql, tags: ['sql'] }
     - { role: yum_update, tags: ['yum'] }
     - { role: yum_packages, tags: ['yum'] }

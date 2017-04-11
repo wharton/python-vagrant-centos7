@@ -1,0 +1,15 @@
+---
+- name: Install FreeTDS
+  yum:
+    name: freetds-devel
+    state: present
+
+- name: Copy odbcinst.ini to /etc
+  copy:
+    src: ../files/odbcinst.ini
+    dest: /etc/odbcinst.ini
+
+#- name: Copy freetds.conf to /etc
+#  copy:
+#    src: ../files/freetds.conf
+#    dest: /etc/freetds.conf

@@ -1,21 +1,17 @@
 ---
-- name: Install Apache httpd 2.4 from RHEL
+- name: Install firewalld from RHEL
   yum:
-    name: 'httpd'
+    name: 'firewalld'
     state: present
 
 - name: Make sure httpd is started at boot.
   service:
-    name: httpd
+    name: firewalld
     enabled: true
     state: started
 
+# Django's Runserver
 - firewalld:
-    service: http
-    permanent: true
-    state: enabled
-
-- firewalld:
-    service: https
+    port: 8000/tcp
     permanent: true
     state: enabled
