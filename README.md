@@ -93,13 +93,7 @@ First, install `django-extensions` and `pygraphviz`:
 
     pip install django-extensions pygraphviz
 
-
-Or add them to your requirements file:
-
-    pygraphviz==1.3.1
-    django-extensions==1.7.3
-
-Then you can create the diagrams; to create a PNG of all models in your Django project.
+Next, add `django_extensions` to your `INSTALLED_APPS`. Then you can create the diagrams; to create a PNG of all models in your Django project.
 
     ./manage.py graph_models -a -g -o project-erd.png
 
