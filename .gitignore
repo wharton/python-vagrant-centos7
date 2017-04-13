@@ -54,5 +54,5 @@ Desktop.ini
 # Test Coverage Suite
 .coverage
 
-# Django Projects directory
-html/
+# Projects directory
+projects/
