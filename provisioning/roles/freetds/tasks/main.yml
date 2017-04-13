@@ -1,15 +1,13 @@
 ---
 - name: Install FreeTDS
   yum:
-    name: freetds-devel
+    name: "{{ item }}"
     state: present
+  with_items:
+   - unixODBC-devel
+   - freetds-devel
 
 - name: Copy odbcinst.ini to /etc
   copy:
     src: ../files/odbcinst.ini
     dest: /etc/odbcinst.ini
-
-#- name: Copy freetds.conf to /etc
-#  copy:
-#    src: ../files/freetds.conf
-#    dest: /etc/freetds.conf
