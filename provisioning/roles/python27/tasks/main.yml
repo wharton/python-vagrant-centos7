@@ -3,6 +3,8 @@
   yum:
     name: 'python2-pip'
     state: present
+
+# Pygments for system wide syntax highlighting with 'ccat' command
 - name: Install Pygments for Python 3.5
   pip:
     name: Pygments
@@ -15,6 +17,7 @@
     - { line: '# The line below allows syntax highlighting for files with the command "ccat".' }
     - { line: "alias ccat='pygmentize -O style=monokai -f terminal -g'" }
 
+# Set up virtualenvwrapper to use Python 3.5 by default
 - name: Install virtualenvwrapper for Python 3.5
   pip:
     name: virtualenvwrapper
