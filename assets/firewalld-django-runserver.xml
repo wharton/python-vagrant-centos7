@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<service>
-  <short>Django runserver</short>
-  <description>Django is a web framework with a built in, lightweight web server that typically runs on port 8000.</description>
-  <port protocol="tcp" port="8000"/>
-  <port protocol="tcp" port="8100"/>
-  <port protocol="tcp" port="8080"/>
-</service>
