@@ -10,8 +10,8 @@ rpm -Uvh http://yum.postgresql.org/9.6/redhat/rhel-7-x86_64/pgdg-centos96-9.6-3.
 echo "Installing PostgreSQL..."
 yum -y --quiet install postgresql96-server postgresql96 postgresql96-devel postgresql96-contrib
 /usr/pgsql-9.6/bin/postgresql96-setup initdb
-cp /vagrant/examples/pg_hba.conf /var/lib/pgsql/9.6/data
-cp /vagrant/examples/postgresql.conf /var/lib/pgsql/9.6/data
+cp /vagrant/assets/pg_hba.conf /var/lib/pgsql/9.6/data
+cp /vagrant/assets/postgresql.conf /var/lib/pgsql/9.6/data
 systemctl restart postgresql-9.6
 systemctl enable postgresql-9.6
 
