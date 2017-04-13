@@ -18,3 +18,17 @@
     state: present
     line: "RES_OPTIONS=single-request-reopen"
   notify: restart network
+
+- name: Copy in custom motd file
+  copy:
+    src: "../files/motd.txt"
+    dest: /etc/motd
+    mode: 0644
+
+- name: Set 'ccat' alias in global bashrc
+  lineinfile:
+    dest: /etc/bashrc
+    line: "{{ item.line }}"
+  with_items:
+    - { line: '# The line below aliases the menu command to show the motd.' }
+    - { line: "alias menu='cat /etc/motd'" }
