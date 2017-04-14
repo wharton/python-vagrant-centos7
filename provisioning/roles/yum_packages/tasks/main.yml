@@ -12,3 +12,7 @@
    - sqlite-devel
    - bzip2-devel
    - graphviz-devel
+   - openssl-devel
+   - libffi-devel
+   - libjpeg-turbo-devel
+   - giflib
