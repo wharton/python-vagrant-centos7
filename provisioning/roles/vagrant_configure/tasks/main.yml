@@ -32,3 +32,11 @@
   with_items:
     - { line: '# The line below aliases the menu command to show the motd.' }
     - { line: "alias menu='cat /etc/motd'" }
+
+- name: Create a symlink to the shared host/guest projects folder
+  file:
+    src: /vagrant/projects
+    dest: /home/vagrant/projects
+    owner: vagrant
+    group: vagrant
+    state: link

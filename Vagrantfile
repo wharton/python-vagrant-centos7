@@ -22,7 +22,7 @@ Vagrant.configure("2") do |config|
     config.vm.hostname = ENV['VAGRANT_HOSTNAME']
 
     config.vm.provision "ansible_local" do |ansible|
-        ansible.verbose = "v"
+        # ansible.verbose = "v"
         ansible.playbook = "provisioning/vagrant_playbook.yml"
     end
 end

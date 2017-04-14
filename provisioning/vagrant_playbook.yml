@@ -12,8 +12,9 @@
     - { role: httpd, tags: ['httpd'] }
     - { role: httpd_mod_wsgi, tags: ['python', 'httpd'] }
     - { role: freetds, tags: ['sql', 'freetds'] }
+    - { role: elastic_search, tags: ['search', 'elastic'] }
     # The following line will use the Microsoft driver
     # We're using FreeTDS.
     # - { role: mssql, tags: ['sql'] }
-    - { role: yum_update, tags: ['yum'] }
+    # - { role: yum_update, tags: ['yum'] }
     - { role: yum_packages, tags: ['yum'] }

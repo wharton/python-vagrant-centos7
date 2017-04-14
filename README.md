@@ -30,22 +30,14 @@ Django versions 1.8 and greater are supported. Python 3.5 was first supported in
 * Install git http://git-scm.com/downloads (Mac) or Git Bash https://openhatch.org/missions/windows-setup/install-git-bash (Windows)
 * Create and add a public SSH key to your git server.
 
-Verify that your SSH keys are active:
-
-```
-                    $ eval $(ssh-agent)
-(Windows Git Bash): $ ssh-add C:/Users/[username]/.ssh/id_rsa
-             (Mac): $ ssh-add ~/.ssh/id_rsa
-                    $ ssh-add -l
-```
-
-Make a copy of the repo and bring up the virtual development environment. The "vagrant up" command will take a little while:
+Clone the repository and bring up the virtual development environment. The first time you install the box, "vagrant up" will take
+a little while. Grab a cup of coffee or something!
 
 ``` bash
-$ git clone https://github.com/wharton/python-vagrant-centos7.git
-$ cd python-vagrant-centos7
-$ vagrant up
-$ vagrant ssh
+git clone https://github.com/wharton/python-vagrant-centos7.git
+cd python-vagrant-centos7
+vagrant up
+vagrant ssh
 ```
 
 ## Specifying a Host Name

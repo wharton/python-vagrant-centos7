@@ -1,0 +1,8 @@
+---
+- name: Install Java for Elastic Search
+  yum:
+    name: "{{ item }}"
+    state: present
+  with_items:
+    - java-1.8.0-openjdk.x86_64
+    - https://download.elastic.co/elasticsearch/elasticsearch/elasticsearch-1.7.3.noarch.rpm
