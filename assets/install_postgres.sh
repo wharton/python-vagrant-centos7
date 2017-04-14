@@ -14,6 +14,7 @@ cp /vagrant/assets/pg_hba.conf /var/lib/pgsql/9.6/data
 cp /vagrant/assets/postgresql.conf /var/lib/pgsql/9.6/data
 systemctl restart postgresql-9.6
 systemctl enable postgresql-9.6
+ln -s /usr/pgsql-9.6/bin/pg_config /usr/bin/pg_config
 
 echo "Opening up port 5432 on the firewall..."
 firewall-cmd --permanent --add-service postgresql > /dev/null 2>&1
