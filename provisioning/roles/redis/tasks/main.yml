@@ -1,0 +1,11 @@
+---
+- name: Install redis
+  yum:
+    name: redis
+    state: present
+
+- name: Make sure redis is started at boot.
+  service:
+    name: redis
+    enabled: true
+    state: started
