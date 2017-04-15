@@ -7,6 +7,7 @@
     - { role: firewalld, tags: ['firewalld'] }
     - { role: repository_epel, tags: ['yum'] }
     - { role: repository_ius, tags: ['yum'] }
+    - { role: yum_packages, tags: ['yum'] }
     - { role: python27, tags: ['python'] }
     - { role: python35, tags: ['python'] }
     - { role: httpd, tags: ['httpd'] }
@@ -18,4 +19,3 @@
     # We're using FreeTDS.
     # - { role: mssql, tags: ['sql'] }
     # - { role: yum_update, tags: ['yum'] }
-    - { role: yum_packages, tags: ['yum'] }
