@@ -1,7 +1,7 @@
 ---
 - name: Install redis
   yum:
-    name: redis
+    name: redis32u
     state: present
 
 - name: Make sure redis is started at boot.

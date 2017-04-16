@@ -5,7 +5,7 @@
     state: present
 
 # Pygments for system wide syntax highlighting with 'ccat' command
-- name: Install Pygments for Python 3.5
+- name: Install Pygments for Python 2.7
   pip:
     name: Pygments
 
@@ -18,7 +18,7 @@
     - { line: "alias ccat='pygmentize -O style=monokai -f terminal -g'" }
 
 # Set up virtualenvwrapper to use Python 3.5 by default
-- name: Install virtualenvwrapper for Python 3.5
+- name: Install virtualenvwrapper for Python 2.7, using Python 3.5 default for virtualenvs
   pip:
     name: virtualenvwrapper
 
