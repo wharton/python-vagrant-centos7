@@ -1,11 +1,4 @@
 ---
-# Disable fastestmirror plugin for apache - for faster installs on vagrant
-- name: Replace enabled line in fastestmirror.conf
-  lineinfile:
-    dest: /etc/yum/pluginconf.d/fastestmirror.conf
-    regexp: "^enabled=1"
-    line: "enabled=0"
-
 - name: Vagrant networking; resolve.conf option
   lineinfile:
     dest: /etc/resolv.conf
