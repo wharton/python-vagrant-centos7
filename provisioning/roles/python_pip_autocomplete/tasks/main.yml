@@ -1,0 +1,13 @@
+---
+- name: Copy odbcinst.ini to /etc
+  copy:
+    src: ../files/autocomplete_pip.txt
+    dest: /etc/bash_completion.d/pip
+
+- name: Set pip tab completion in global bashrc
+  lineinfile:
+    dest: /etc/bashrc
+    line: "{{ item }}"
+  with_items:
+    - "# pip tab completion"
+    - "source /etc/bash_completion.d/pip"

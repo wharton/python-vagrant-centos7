@@ -10,6 +10,7 @@
     - { role: yum_packages, tags: ['yum'] }
     - { role: python27, tags: ['python'] }
     - { role: python35, tags: ['python'] }
+    - { role: python_pip_autocomplete, tags: ['python'] }
     - { role: httpd, tags: ['httpd'] }
     - { role: httpd_mod_wsgi, tags: ['python', 'httpd'] }
     - { role: freetds, tags: ['sql', 'freetds'] }
