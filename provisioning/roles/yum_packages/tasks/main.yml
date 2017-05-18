@@ -16,3 +16,7 @@
    - libffi-devel
    - libjpeg-turbo-devel
    - giflib
+- name: Install freaking vim
+  yum:
+    name: "vim"
+    state: present
