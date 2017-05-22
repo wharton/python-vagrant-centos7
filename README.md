@@ -16,8 +16,8 @@ Django versions 1.8 and greater are supported. Python 3.5 was first supported in
     * Mac: https://releases.hashicorp.com/vagrant/1.9.1/vagrant_1.9.1.dmg
     * Windows: https://releases.hashicorp.com/vagrant/1.9.1/vagrant_1.9.1.msi
 * Tested with VirtualBox up to 5.0.24:
-    * Mac: http://download.virtualbox.org/virtualbox/5.0.24/VirtualBox-5.0.24-1083.6-OSX.dmg
-    * Windows: http://download.virtualbox.org/virtualbox/5.0.24/VirtualBox-5.0.24-1083.6-Win.exe
+    * Mac: http://download.virtualbox.org/virtualbox/5.0.24/VirtualBox-5.0.24-108355-OSX.dmg
+    * Windows: http://download.virtualbox.org/virtualbox/5.0.24/VirtualBox-5.0.24-108355-Win.exe
 * Tested on: OS/X Yosemite, and El Capitan. MS Windows 7, 8, and 10.
 * Windows note: we recommend using with Git Bash: https://git-for-windows.github.io/
     * In Git Bash, click the diamond shaped multi-colored upper left icon, OPTIONS. You may want to go through the option list to increase your default window size, set up copy/paste shortcuts, and set up mouse selection for copy/paste.
