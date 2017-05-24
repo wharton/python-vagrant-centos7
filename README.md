@@ -80,11 +80,26 @@ The `django-extensions` app can build handy Entity Relationship Diagrams for Dja
 
 ![An example ERD with three Django apps.](assets/users-faculty-courses.png)
 
-First, within your Django project's virtualenv, install `django-extensions` and `pygraphviz`:
+First, create a new virtual environment for your Django project:
 
-    (django-project) [vagrant@vagrant django-project]$ pip install django-extensions pygraphviz
+```
+$ mkvirtualenv django-project
+```
 
-Next, add `django_extensions` to your `INSTALLED_APPS`. Then you can create the diagrams; to create a PNG of all models in your Django project.
+Now, within this virtualenv, install `django`, `django-extensions`, and `pygraphviz`:
+
+```
+    (django-project) [vagrant@vagrant django-project]$ pip install django django-extensions pygraphviz
+```
+
+Next, create a new Django project and enter its directory:
+
+```
+$ django-admin startproject myproject
+$ cd myproject
+```
+
+Then, add `django_extensions` to your `INSTALLED_APPS`. Finally, you can create the diagrams; to create a PNG of all models in your Django project.
 
     ./manage.py graph_models -a -g -o project-erd.png
 
