@@ -10,7 +10,7 @@ MS SQL is also supported as a Django database backend with the FreeTDS ODBC Driv
 
 Django versions 1.8 and greater are supported, however, Django 1.11 or greater is recommended at the time of this writing for new projects. Django 1.11 is an LTS (Long Term Support) release, meaning it will be actively supported with bug fixes and security patches until at least April, 2020 (and probably longer): https://www.djangoproject.com/download/#supported-versions
 
-## Compatibility
+## Compatibility & Prerequisites to Install
 
 ### Mac / Linux
 
