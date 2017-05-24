@@ -89,7 +89,7 @@ $ mkvirtualenv django-project
 Now, within this virtualenv, install `django`, `django-extensions`, and `pygraphviz`:
 
 ```
-    (django-project) [vagrant@vagrant django-project]$ pip install django django-extensions pygraphviz
+(django-project) [vagrant@vagrant django-project]$ pip install django django-extensions pygraphviz
 ```
 
 Next, create a new Django project and enter its directory:
