@@ -28,10 +28,10 @@ Django versions 1.8 and greater are supported, however, Django 1.11 or greater i
 
 * Tested with Vagrant 1.9.1: https://releases.hashicorp.com/vagrant/1.9.1/vagrant_1.9.1.msi
 * Tested with VirtualBox 5.0.24: http://download.virtualbox.org/virtualbox/5.0.24/VirtualBox-5.0.24-108355-Win.exe
-* Tested on: Windows 7, 8, and 10.
 * Git Bash is required, not the Windows Command Prompt (cmd.exe): https://git-for-windows.github.io/
     * In Git Bash, click the diamond shaped multi-colored icon in the upper left of the window, OPTIONS. You may want to go through the option list to increase your default window size, set up copy/paste shortcuts, and set up mouse selection for copy/paste.
 * On newer machines, ensure that you have virtualization enabled in BIOS (Google it for your machine's model).
+* Tested on: Windows 7, 8, and 10.
 
 ## Get Started
 
