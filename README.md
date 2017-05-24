@@ -82,17 +82,17 @@ First, create a new virtual environment for your Django project:
 $ mkvirtualenv django-project
 ```
 
-Now, within this virtualenv, install `django`, `django-extensions`, and `pygraphviz`:
+Next, within this virtualenv, install `django`, `django-extensions`, and `pygraphviz`:
 
 ```
 (django-project) [vagrant@vagrant django-project]$ pip install django django-extensions pygraphviz
 ```
 
-Next, create a new Django project and enter its directory:
+Now, create a new Django project and enter its directory:
 
 ```
-$ django-admin startproject myproject
-$ cd myproject
+(django-project) [vagrant@vagrant django-project]$ django-admin startproject myproject
+(django-project) [vagrant@vagrant django-project]$ cd myproject
 ```
 
 ## Creating ERDs of Django Models
