@@ -74,11 +74,7 @@ vagrant=# \?
 vagrant=# \q
 ```
 
-## Creating ERDs of Django Models
-
-The `django-extensions` app can build handy Entity Relationship Diagrams for Django apps, even your entire project. The pre-requisites for the Python packages are included with this Vagrant box.
-
-![An example ERD with three Django apps.](assets/users-faculty-courses.png)
+## Setting Up Django & virtualenv
 
 First, create a new virtual environment for your Django project:
 
@@ -99,7 +95,13 @@ $ django-admin startproject myproject
 $ cd myproject
 ```
 
-Then, add `django_extensions` to your `settings.py` under `INSTALLED_APPS`. Finally, when desired, you can create the diagrams; to create a PNG of all models in your Django project.
+## Creating ERDs of Django Models
+
+The `django-extensions` app can build handy Entity Relationship Diagrams for Django apps, even your entire project. The pre-requisites for the Python packages are included with this Vagrant box.
+
+![An example ERD with three Django apps.](assets/users-faculty-courses.png)
+
+First, add `django_extensions` to your `settings.py` under `INSTALLED_APPS`. Then you can create the diagrams; to create a PNG of all models in your Django project.
 
     ./manage.py graph_models -a -g -o project-erd.png
 
