@@ -24,6 +24,15 @@ Django versions 1.8 and greater are supported, however, Django 1.11 or greater i
 * Vagrant 1.9.1 can be downloaded here: https://releases.hashicorp.com/vagrant/1.9.1/
 * VirtualBox 5.0.24 can be downloaded here: http://download.virtualbox.org/virtualbox/5.0.24/
 
+**Fedora 25, CentOS 7**
+
+These are available via the package manager.
+
+    ```
+    $ sudo dnf install vagrant
+    $ sudo dnf install VirtualBox
+    ```
+
 ### Windows
 
 * Tested with Vagrant 1.9.1: https://releases.hashicorp.com/vagrant/1.9.1/vagrant_1.9.1.msi
@@ -47,15 +56,46 @@ VAGRANT_HOSTNAME="vagrant.my.domain.com" vagrant up
 vagrant ssh
 ```
 
-You can also add the host name to your computer's `hosts` file. Your `hosts` file should be located at:
+**Fedora 25, CentOS 7**
 
-* Mac / Linux: /etc/hosts
-* Windows: %SystemRoot%\system32\drivers\etc\hosts
+Check Vagrantfile and make sure the port forwarding settings will work for
+your use case. You may wish to forward the guest VM port 80 to something
+other than port 80 on the host, e.g. 8888.
+
+```
+config.vm.network "forwarded_port", guest: 80, host: 8888, auto_correct: false
+```
+
+Replace the the VAGRANT_HOSTNAME line from above with the following.
+
+```
+$ vagrant up --provider=virtualbox 
+```
+
+Sit back, let the installation complete.
+
+
+* You can also add the host name to your computer's `hosts` file. Your `hosts` file should be located at:
+
+    * Mac / Linux: /etc/hosts
+    * Windows: %SystemRoot%\system32\drivers\etc\hosts
 
 Add this line (with the appropriate host name, if you changed it):
 
 ``` bash
 192.168.99.100  vagrant.my.domain.com
+```
+
+### Default installation creates
+
+    default: SSH address: 127.0.0.1:2222
+    default: SSH username: vagrant
+    default: SSH auth method: private key
+
+SSH into the vagrant box using the default password, vagrant
+
+```
+$ ssh vagrant@vagrant.my.domain.com -p 2222
 ```
 
 ## Setting Up PostgreSQL & Getting Started
