@@ -99,7 +99,7 @@ $ django-admin startproject myproject
 $ cd myproject
 ```
 
-Then, add `django_extensions` to your `INSTALLED_APPS`. Finally, you can create the diagrams; to create a PNG of all models in your Django project.
+Then, add `django_extensions` to your `settings.py` under `INSTALLED_APPS`. Finally, when desired, you can create the diagrams; to create a PNG of all models in your Django project.
 
     ./manage.py graph_models -a -g -o project-erd.png
 
