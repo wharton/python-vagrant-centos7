@@ -61,7 +61,7 @@ Add this line (with the appropriate host name, if you changed it):
 ## Setting Up PostgreSQL & Getting Started
 
 On your Vagrant box, a script has been provided to install PostgreSQL Server 9.6 and set up
-the `vagrant` user as superuser alongside the system `postgres` user.
+the `vagrant` user as superuser alongside the system `postgres` user. There may be some warnings during the installation; as long as you get the correct prompt when you type `psql`, the installation worked.
 
 ```
 $ sudo /vagrant/assets/install_postgres.sh
