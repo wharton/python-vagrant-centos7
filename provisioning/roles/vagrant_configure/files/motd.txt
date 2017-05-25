@@ -10,7 +10,7 @@
       "-=\~     _
          \\~___( ~
         _|/---\\_
-        \        \ 
+        \        \. ..    .. ..    .. ..     .. .. 
 
 Welcome to Python 3 on CentOS 7.2! Try out Django:
 
