@@ -163,3 +163,6 @@ Contributors:
 * Tim Allen (tallen@wharton.upenn.edu)
 * Gavin Burris (bug@wharton.upenn.edu)
 * Dave Roller (roller@wharton.upenn.edu)
+* Brian Jopling
+* Clay Wells
+
