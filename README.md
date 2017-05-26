@@ -1,4 +1,5 @@
 # A CentOS 7.2 Vagrant Box with Python 3.5 via Ansible
+
 * Apache 2.4, with mod_wsgi for running Django
 * FreeTDS drivers for MS SQL Server
 * PostgreSQL Drivers & Server
@@ -23,6 +24,16 @@ Django versions 1.8 and greater are supported, however, Django 1.11 or greater i
 
 * Vagrant 1.9.1 can be downloaded here: https://releases.hashicorp.com/vagrant/1.9.1/
 * VirtualBox 5.0.24 can be downloaded here: http://download.virtualbox.org/virtualbox/5.0.24/
+* On newer machines, ensure that you have virtualization enabled in BIOS (duckduckgo it for your machine's model).
+
+**Fedora 25, CentOS 7**
+
+These are available via the package manager.
+
+```
+$ sudo dnf install vagrant
+$ sudo dnf install VirtualBox
+```
 
 ### Windows
 
@@ -47,16 +58,55 @@ VAGRANT_HOSTNAME="vagrant.my.domain.com" vagrant up
 vagrant ssh
 ```
 
-You can also add the host name to your computer's `hosts` file. Your `hosts` file should be located at:
+**Fedora 25, CentOS 7**
 
-* Mac / Linux: /etc/hosts
-* Windows: %SystemRoot%\system32\drivers\etc\hosts
+Check Vagrantfile and make sure the port forwarding settings will work for
+your use case. You may wish to forward the guest VM port 80 to something
+other than port 80 on the host, e.g. 8888.
+
+``` 
+config.vm.network "forwarded_port", guest: 80, host: 8888, auto_correct: false
+```
+
+Replace the the VAGRANT_HOSTNAME line from above with the following.
+
+```
+$ vagrant up --provider=virtualbox 
+```
+
+Sit back, let the installation complete.
+
+
+* You can also add the host name to your computer's `hosts` file. Your `hosts` file should be located at:
+
+    * Mac / Linux: /etc/hosts
+    * Windows: %SystemRoot%\system32\drivers\etc\hosts
 
 Add this line (with the appropriate host name, if you changed it):
 
-``` bash
+```
 192.168.99.100  vagrant.my.domain.com
 ```
+
+### Default installation creates
+
+    default: SSH address: 127.0.0.1:2222
+    default: SSH username: vagrant
+    default: SSH auth method: private key
+
+```
+$ vagrant ssh
+```
+
+Another, less desirable, option for SSH'ing into the vagrant box..
+(this requires the use of the default password, vagrant)
+
+```
+$ ssh vagrant@vagrant.my.domain.com -p 2222
+```
+
+At this point, you should change the default password for the vagrant user.
+You may also want to add/remove users soon.
 
 ## Setting Up PostgreSQL & Getting Started
 
@@ -101,13 +151,23 @@ The `django-extensions` app can build handy Entity Relationship Diagrams for Dja
 
 ![An example ERD with three Django apps.](assets/users-faculty-courses.png)
 
-First, add `django_extensions` to your `settings.py` under `INSTALLED_APPS`. Then you can create the diagrams; to create a PNG of all models in your Django project.
+First, within your Django project's virtualenv, install `django-extensions` and `pygraphviz`:
 
-    ./manage.py graph_models -a -g -o project-erd.png
+```
+ (django-project) [vagrant@vagrant django-project]$ pip install django-extensions pygraphviz
+```
+
+Next, add `django_extensions` to your `INSTALLED_APPS`. Then you can create the diagrams; to create a PNG of all models in your Django project.
+
+```
+$ ./manage.py graph_models -a -g -o project-erd.png
+```
 
 Or, to just do a few Django apps:
 
-    ./manage.py graph_models users faculty courses -g -o users-faculty-courses.png
+```
+$ ./manage.py graph_models users faculty courses -g -o users-faculty-courses.png
+```
 
 ## Windows 10: Forwarding Port 80 for Testing Apache
 
