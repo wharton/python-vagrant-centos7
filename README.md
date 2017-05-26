@@ -124,6 +124,27 @@ vagrant=# \?
 vagrant=# \q
 ```
 
+## Setting Up Django & virtualenv
+
+First, create a new virtual environment for your Django project:
+
+```
+$ mkvirtualenv django-project
+```
+
+Next, within this virtualenv, install `django`, `django-extensions`, and `pygraphviz`:
+
+```
+(django-project) [vagrant@vagrant django-project]$ pip install django django-extensions pygraphviz
+```
+
+Now, create a new Django project and enter its directory:
+
+```
+(django-project) [vagrant@vagrant django-project]$ django-admin startproject myproject
+(django-project) [vagrant@vagrant django-project]$ cd myproject
+```
+
 ## Creating ERDs of Django Models
 
 The `django-extensions` app can build handy Entity Relationship Diagrams for Django apps, even your entire project. The pre-requisites for the Python packages are included with this Vagrant box.
