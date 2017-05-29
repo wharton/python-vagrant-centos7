@@ -15,8 +15,8 @@ Django versions 1.8 and greater are supported, however, Django 1.11 or greater i
 
 ### Mac
 
-* Tested with Vagrant 1.9.1: https://releases.hashicorp.com/vagrant/1.9.1/vagrant_1.9.1.dmg
-* Tested with VirtualBox 5.0.24: http://download.virtualbox.org/virtualbox/5.0.24/VirtualBox-5.0.24-108355-OSX.dmg
+* Tested with Vagrant 1.9.5: https://releases.hashicorp.com/vagrant/1.9.5/vagrant_1.9.5_x86_64.dmg
+* Tested with VirtualBox 5.1.22: http://download.virtualbox.org/virtualbox/5.1.22/VirtualBox-5.1.22-115126-OSX.dmg
 * Git is required: http://git-scm.com/downloads
 * Tested on: OS/X Yosemite, and El Capitan, and Sierra.
 
