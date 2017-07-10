@@ -126,7 +126,13 @@ vagrant=# \q
 
 ## Setting Up Django & virtualenv
 
-First, create a new virtual environment for your Django project:
+First, change to the directory set aside to hold user projects.
+
+```
+$ cd projects
+```
+
+Next, create a new virtual environment for your Django project:
 
 ```
 $ mkvirtualenv django-project
