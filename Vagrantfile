@@ -9,6 +9,7 @@ Vagrant.configure("2") do |config|
         v.customize ["modifyvm", :id, "--cpuexecutioncap", "75"]
         v.customize ["modifyvm", :id, "--vram", "12"]
         v.customize ["modifyvm", :id, "--ioapic", "on"]
+        v.customize ["setextradata", :id, "VBoxInternal2/SharedFoldersEnableSymlinksCreate/vagrant", "1"]
     end
 
     # Set up a private IP that can be added to the host machine's hosts file

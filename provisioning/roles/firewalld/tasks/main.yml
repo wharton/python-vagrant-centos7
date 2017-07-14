@@ -15,3 +15,15 @@
     port: 8000/tcp
     permanent: true
     state: enabled
+
+# SIMPL Model Service
+- firewalld:
+    port: 8080/tcp
+    permanent: true
+    state: enabled
+
+# SIMPL API
+- firewalld:
+    port: 8100/tcp
+    permanent: true
+    state: enabled

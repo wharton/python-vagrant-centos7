@@ -15,6 +15,7 @@
     - { role: freetds, tags: ['sql', 'freetds'] }
     - { role: elastic_search, tags: ['search', 'elastic'] }
     - { role: redis, tags: ['cache', 'redis'] }
+    - { role: postgresql, tags: ['postgresql']}
     # The following line will use the Microsoft driver
     # We're using FreeTDS.
     # - { role: mssql, tags: ['sql'] }
