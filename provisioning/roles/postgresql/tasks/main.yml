@@ -43,3 +43,9 @@
   become: yes
   become_user: postgres
   become_method: sudo
+
+- name: Create vagrant PostgreSQL database
+  postgresql_db: name=vagrant owner=vagrant state=present
+  become: yes
+  become_user: postgres
+  become_method: sudo

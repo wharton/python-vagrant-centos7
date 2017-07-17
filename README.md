@@ -114,7 +114,7 @@ The Vagrant box comes with PostgreSQL 9.6. The `vagrant` user is set up as a Pos
 
 ```
 $ psql
-psql (9.6.2)
+psql (9.6.3)
 Type "help" for help.
 
 vagrant=# \?
