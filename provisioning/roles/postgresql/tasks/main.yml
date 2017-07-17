@@ -24,6 +24,12 @@
   become: true
   become_user: root
 
+- name: Create a symbolic link to pg_config binary so pip installs of psycopg2 work
+  file:
+    src: /usr/pgsql-9.6/bin/pg_config
+    dest: /usr/bin/pg_config
+    state: link
+
 - name: Ensure PostgreSQL 9.6 service is running
   service: name=postgresql-9.6 state=started enabled=yes
 

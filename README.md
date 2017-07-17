@@ -108,19 +108,21 @@ $ ssh vagrant@vagrant.my.domain.com -p 2222
 At this point, you should change the default password for the vagrant user.
 You may also want to add/remove users soon.
 
-## Setting Up PostgreSQL & Getting Started
+## Using PostgreSQL & Creating a New Database for a Django Project
 
-On your Vagrant box, a script has been provided to install PostgreSQL Server 9.6 and set up
-the `vagrant` user as superuser alongside the system `postgres` user. There may be some warnings during the installation; as long as you get the correct prompt when you type `psql`, the installation worked.
+The Vagrant box comes with PostgreSQL 9.6. The `vagrant` user is set up as a PostgreSQL superuser (in addition to the `postgres` user).
 
 ```
-$ sudo /vagrant/assets/install_postgres.sh
 $ psql
 psql (9.6.2)
 Type "help" for help.
 
 vagrant=# \?
 ...
+vagrant=# CREATE USER my_django_user WITH PASSWORD 'my_django_password';
+CREATE ROLE
+vagrant=# CREATE DATABASE my_django_db WITH OWNER my_django_user;
+CREATE DATABASE
 vagrant=# \q
 ```
 
