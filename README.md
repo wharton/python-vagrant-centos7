@@ -126,6 +126,17 @@ CREATE DATABASE
 vagrant=# \q
 ```
 
+If you'd like to connect from a GUI on your local system, please run the following commands to install appropriate configuration files and open the port on the VM firewall:
+
+```
+firewall-cmd --permanent --add-service postgresql
+systemctl restart firewalld
+sudo cp /vagrant/assets/p*.conf /var/lib/pgsql/9.6/data/
+sudo su - postgres
+/usr/pgsql-9.6/bin/pg_ctl restart
+exit
+```
+
 ## Setting Up Django & virtualenv
 
 First, change to the directory set aside to hold user projects.
