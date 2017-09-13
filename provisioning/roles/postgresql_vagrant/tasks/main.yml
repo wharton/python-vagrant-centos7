@@ -1,0 +1,36 @@
+---
+- name: Create vagrant PostgreSQL database user
+  postgresql_user: name=vagrant role_attr_flags=SUPERUSER state=present
+  become: yes
+  become_user: postgres
+  become_method: sudo
+
+- name: Create vagrant PostgreSQL database
+  postgresql_db: name=vagrant owner=vagrant state=present
+  become: yes
+  become_user: postgres
+  become_method: sudo
+
+- name: Copy PostgreSQL configuration files
+  copy:
+    src: "{{ item }}"
+    dest: /var/lib/pgsql/9.6/data
+  with_items:
+    - ../files/pg_hba.conf
+    - ../files/postgresql.conf
+
+- name: Start PostgreSQL and enable at boot
+  service:
+    name: postgresql-9.6
+    state: restarted
+
+- name: Open up PostgreSQL to the host machine
+  firewalld:
+    service: postgresql
+    permanent: true
+    state: enabled
+
+- name: Restart firewalld.
+  service:
+    name: firewalld
+    state: restarted

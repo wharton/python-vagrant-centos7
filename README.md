@@ -1,78 +1,161 @@
 # A CentOS 7.2 Vagrant Box with Python 3.5 via Ansible
-* Apache 2.4, with mod_wsgi (Django)
+
+* Apache 2.4, with mod_wsgi for running Django
 * FreeTDS drivers for MS SQL Server
 * PostgreSQL Drivers & Server
 * Node + npm
 
-This repository contains a CentOS 7.2 box for Vagrant. Python 3.5.3 is installed alongside the system Python (2.7.5). The Vagrant config uses a bootstrap.sh script, meant to illustrate steps for getting a development environment, with modules in a self-contained directory thanks to virtualenvwrapper.
+This repository contains a CentOS 7.2 box for Vagrant. Python 3.5 and 3.6 are installed alongside the system Python (2.7.5). The Vagrant config uses Ansible roles to configure the box for the development environment, that should also be (mostly) suitable for setting up a production server.
 
-MS SQL is also supported as a Django database backend with the FreeTDS ODBC Driver to SQL Server. PostgreSQL 9.5, including the server, can be install optionally for those using PostgreSQL.
+PostgreSQL 9.6 is installed locally, server and all for full-stack local development. MS SQL is also supported as a Django database backend with the FreeTDS ODBC Driver to an external SQL Server.
 
-Django versions 1.8 and greater are supported. Python 3.5 was first supported in Django 1.8. Django 1.8 is an LTS (Long Term Support) release, meaning it will be actively supported with bug fixes and security patches until at least April, 2018 (and probably longer): https://www.djangoproject.com/download/#supported-versions
+Django 1.11 or greater is recommended at the time of this writing for new projects. Django 1.11 is an LTS (Long Term Support) release, meaning it will be actively supported with bug fixes and security patches until at least April, 2020 (and probably longer): https://www.djangoproject.com/download/#supported-versions
 
-## Compatibility
+## Compatibility & Prerequisites to Install
 
-* Tested with Vagrant 1.9.1:
-    * Mac: https://releases.hashicorp.com/vagrant/1.9.1/vagrant_1.9.1.dmg
-    * Windows: https://releases.hashicorp.com/vagrant/1.9.1/vagrant_1.9.1.msi
-* Tested with VirtualBox up to 5.0.24:
-    * Mac: http://download.virtualbox.org/virtualbox/5.0.24/VirtualBox-5.0.24-1083.6-OSX.dmg
-    * Windows: http://download.virtualbox.org/virtualbox/5.0.24/VirtualBox-5.0.24-1083.6-Win.exe
-* Tested on: OS/X Yosemite, and El Capitan. MS Windows 7, 8, and 10.
-* Windows note: we recommend using with Git Bash: https://git-for-windows.github.io/
-    * In Git Bash, click the diamond shaped multi-colored upper left icon, OPTIONS. You may want to go through the option list to increase your default window size, set up copy/paste shortcuts, and set up mouse selection for copy/paste.
+### Mac
+
+* Tested with Vagrant 2.0.0: https://releases.hashicorp.com/vagrant/2.0.0/vagrant_2.0.0_x86_64.dmg
+* Tested with VirtualBox 5.1.26: http://download.virtualbox.org/virtualbox/5.1.26/VirtualBox-5.1.26-117224-OSX.dmg
+* Git is required: http://git-scm.com/downloads
+* Tested on: OS/X Yosemite, and El Capitan, and Sierra.
+
+### Linux
+
+* Vagrant 1.9.5 can be downloaded here: https://releases.hashicorp.com/vagrant/1.9.5/
+* VirtualBox 5.1.22 can be downloaded here: http://download.virtualbox.org/virtualbox/5.1.22/
+* On newer machines, ensure that you have virtualization enabled in BIOS (duckduckgo it for your machine's model).
+
+**Fedora 25, CentOS 7**
+
+These are available via the package manager.
+
+```
+$ sudo dnf install vagrant
+$ sudo dnf install VirtualBox
+```
+
+### Windows
+
+* Tested with Vagrant 2.0.0: https://releases.hashicorp.com/vagrant/2.0.0/vagrant_2.0.0_x86_64.msi
+* Tested with VirtualBox 5.1.26: http://download.virtualbox.org/virtualbox/5.1.26/VirtualBox-5.1.26-117224-Win.exe
+* Git Bash is required, not the Windows Command Prompt (cmd.exe): https://git-for-windows.github.io/
+    * In Git Bash, click the diamond shaped multi-colored icon in the upper left of the window, OPTIONS. You may want to go through the option list to increase your default window size, set up copy/paste shortcuts, and set up mouse selection for copy/paste.
+* On newer machines, ensure that you have virtualization enabled in BIOS (Google it for your machine's model).
+* Tested on: Windows 7, 8, and 10.
 
 ## Get Started
 
-* Windows: on newer machines, ensure that you have virtualization enabled in BIOS (Google it for your machine's model).
-* Install Virtualbox https://www.virtualbox.org/wiki/Downloads
-* Install Vagrant http://www.vagrantup.com/downloads
-* Install git http://git-scm.com/downloads (Mac) or Git Bash https://openhatch.org/missions/windows-setup/install-git-bash (Windows)
-* Create and add a public SSH key to your git server.
+* Create and add a public SSH key to your git server (GitHub, GitLab, etc).
+* Clone the repository and bring up the virtual development environment. The first time you install the box, "vagrant up" will take a little while. Grab a cup of coffee or something!
+* Use a host name for your domain; for example, if you're a member of The Wharton School, you may want to use the command `VAGRANT_HOSTNAME="vagrant.wharton.upenn.edu" vagrant up` below. If you don't provide a hostname, it will be set to `vagrant.example.com`.
 
-Clone the repository and bring up the virtual development environment. The first time you install the box, "vagrant up" will take
-a little while. Grab a cup of coffee or something!
-
-``` bash
+```bash
 git clone https://github.com/wharton/python-vagrant-centos7.git
 cd python-vagrant-centos7
-vagrant up
+VAGRANT_HOSTNAME="vagrant.my.domain.com" vagrant up
 vagrant ssh
 ```
 
-## Specifying a Host Name
+**Fedora 25, CentOS 7**
 
-By default, the host name will be set to `vagrant.example.com`. You can specify a host name like this:
+Check Vagrantfile and make sure the port forwarding settings will work for
+your use case. You may wish to forward the guest VM port 80 to something
+other than port 80 on the host, e.g. 8888.
 
-``` bash
-$ VAGRANT_HOSTNAME="vagrant.my.domain.com" vagrant up
+``` 
+config.vm.network "forwarded_port", guest: 80, host: 8888, auto_correct: false
 ```
 
-You can also add the host name to your computer's `hosts` file. Your `hosts` file should be located at:
+Replace the the VAGRANT_HOSTNAME line from above with the following.
 
-* Mac / Linux: /etc/hosts
-* Windows: %SystemRoot%\system32\drivers\etc\hosts
+```
+$ vagrant up --provider=virtualbox 
+```
+
+Sit back, let the installation complete.
+
+
+* You can also add the host name to your computer's `hosts` file. Your `hosts` file should be located at:
+
+    * Mac / Linux: /etc/hosts
+    * Windows: %SystemRoot%\system32\drivers\etc\hosts
 
 Add this line (with the appropriate host name, if you changed it):
 
-``` bash
-192.168.99.100  vagrant.example.com
+```
+192.168.99.100  vagrant.my.domain.com
 ```
 
-## Setting Up PostgreSQL & Getting Started
+### Default installation creates
 
-On your Vagrant box, a script has been provided to install PostgreSQL Server 9.6 and set up
-the `vagrant` user as superuser alongside the system `postgres` user.
+    default: SSH address: 127.0.0.1:2222
+    default: SSH username: vagrant
+    default: SSH auth method: private key
 
 ```
-$ sudo /vagrant/assets/install_postgres.sh
+$ vagrant ssh
+```
+
+Another, less desirable, option for SSH'ing into the vagrant box..
+(this requires the use of the default password, vagrant)
+
+```
+$ ssh vagrant@vagrant.my.domain.com -p 2222
+```
+
+At this point, you should change the default password for the vagrant user.
+You may also want to add/remove users soon.
+
+## Using PostgreSQL & Creating a New Database for a Django Project
+
+The Vagrant box comes with PostgreSQL 9.6. The `vagrant` user is set up as a PostgreSQL superuser (in addition to the `postgres` user).
+
+```
 $ psql
-psql (9.6.2)
+psql (9.6.5)
 Type "help" for help.
 
 vagrant=# \?
 ...
+vagrant=# CREATE USER my_django_user WITH PASSWORD 'my_django_password';
+CREATE ROLE
+vagrant=# CREATE DATABASE my_django_db WITH OWNER my_django_user;
+CREATE DATABASE
 vagrant=# \q
+```
+
+If you'd like to connect from a GUI on your local system, a script is available to open the firewall and configure PostgreSQL to allow connections from the host machine.
+
+```
+sudo /vagrant/assets/open_postgres_to_host.sh
+```
+
+## Setting Up Django & virtualenv
+
+First, change to the directory set aside to hold user projects.
+
+```
+$ cd projects
+```
+
+Next, create a new virtual environment for your Django project:
+
+```
+$ mkvirtualenv django-project
+```
+
+Next, within this virtualenv, install `django`, `django-extensions`, and `pygraphviz`:
+
+```
+(django-project) [vagrant@vagrant django-project]$ pip install django django-extensions pygraphviz
+```
+
+Now, create a new Django project and enter its directory:
+
+```
+(django-project) [vagrant@vagrant django-project]$ django-admin startproject myproject
+(django-project) [vagrant@vagrant django-project]$ cd myproject
 ```
 
 ## Creating ERDs of Django Models
@@ -81,17 +164,23 @@ The `django-extensions` app can build handy Entity Relationship Diagrams for Dja
 
 ![An example ERD with three Django apps.](assets/users-faculty-courses.png)
 
-First, install `django-extensions` and `pygraphviz`:
+First, within your Django project's virtualenv, install `django-extensions` and `pygraphviz`:
 
-    pip install django-extensions pygraphviz
+```
+ (django-project) [vagrant@vagrant django-project]$ pip install django-extensions pygraphviz
+```
 
 Next, add `django_extensions` to your `INSTALLED_APPS`. Then you can create the diagrams; to create a PNG of all models in your Django project.
 
-    ./manage.py graph_models -a -g -o project-erd.png
+```
+$ ./manage.py graph_models -a -g -o project-erd.png
+```
 
 Or, to just do a few Django apps:
 
-    ./manage.py graph_models users faculty courses -g -o users-faculty-courses.png
+```
+$ ./manage.py graph_models users faculty courses -g -o users-faculty-courses.png
+```
 
 ## Windows 10: Forwarding Port 80 for Testing Apache
 
@@ -103,7 +192,11 @@ In Windows 10, the "World Wide Web Publishing Service" automatically starts on p
 * Click the "Stop" button.
 * Click "OK".
 
-Authors:
+Contributors:
 
 * Tim Allen (tallen@wharton.upenn.edu)
+* Gavin Burris (bug@wharton.upenn.edu)
 * Dave Roller (roller@wharton.upenn.edu)
+* Brian Jopling
+* Clay Wells
+

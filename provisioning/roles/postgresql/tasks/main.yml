@@ -1,0 +1,42 @@
+---
+- name: Install Postgresql Team YUM repo
+  yum:
+    name: https://download.postgresql.org/pub/repos/yum/9.6/redhat/rhel-7-x86_64/pgdg-centos96-9.6-3.noarch.rpm
+    state: present
+
+- name: Install PostgreSQL 9.6 Server
+  yum:
+    name: postgresql96-server
+    state: present
+
+- name: Install PostgreSQL 9.6 devel package
+  yum:
+    name: postgresql96-devel
+    state: present
+
+- name: Install PostgreSQL 9.6 contrib package
+  yum:
+    name: postgresql96-contrib
+    state: present
+
+- name: Initialize PostgreSQL 9.6
+  command: /usr/pgsql-9.6/bin/postgresql96-setup initdb creates=/var/lib/pgsql/9.6/initdb.log
+  become: true
+  become_user: root
+
+- name: Create a symbolic link to pg_config binary so pip installs of psycopg2 work
+  file:
+    src: /usr/pgsql-9.6/bin/pg_config
+    dest: /usr/bin/pg_config
+    state: link
+
+- name: Ensure PostgreSQL 9.6 service is running
+  service:
+    name: postgresql-9.6
+    state: started
+    enabled: yes
+
+- name: Ensure psycopg2 is installed
+  yum:
+    name: python-psycopg2
+    state: present
