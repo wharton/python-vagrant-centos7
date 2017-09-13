@@ -26,7 +26,7 @@
 
 - name: Open up PostgreSQL to the host machine
   firewalld:
-    port: 5432/tcp
+    service: postgresql
     permanent: true
     state: enabled
 
