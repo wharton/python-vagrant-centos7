@@ -40,9 +40,3 @@
   yum:
     name: python-psycopg2
     state: present
-
-- name: Open up PostgreSQL to the host machine
-  firewalld:
-    port: 5432/tcp
-    permanent: true
-    state: enabled

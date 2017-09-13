@@ -23,3 +23,14 @@
   service:
     name: postgresql-9.6
     state: restarted
+
+- name: Open up PostgreSQL to the host machine
+  firewalld:
+    port: 5432/tcp
+    permanent: true
+    state: enabled
+
+- name: Restart firewalld.
+  service:
+    name: firewalld
+    state: restarted
