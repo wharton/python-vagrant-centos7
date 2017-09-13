@@ -31,9 +31,18 @@
     state: link
 
 - name: Ensure PostgreSQL 9.6 service is running
-  service: name=postgresql-9.6 state=started enabled=yes
+  service:
+    name: postgresql-9.6
+    state: started
+    enabled: yes
 
 - name: Ensure psycopg2 is installed
   yum:
     name: python-psycopg2
     state: present
+
+- name: Open up PostgreSQL to the host machine
+  firewalld:
+    port: 5432/tcp
+    permanent: true
+    state: enabled

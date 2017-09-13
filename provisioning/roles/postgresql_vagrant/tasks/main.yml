@@ -10,3 +10,16 @@
   become: yes
   become_user: postgres
   become_method: sudo
+
+- name: Copy PostgreSQL configuration files
+  copy:
+    src: "{{ item }}"
+    dest: /var/lib/pgsql/9.6/data
+  with_items:
+    - ../files/pg_hba.conf
+    - ../files/postgresql.conf
+
+- name: Start PostgreSQL and enable at boot
+  service:
+    name: postgresql-9.6
+    state: restarted

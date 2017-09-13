@@ -5,18 +5,18 @@
 * PostgreSQL Drivers & Server
 * Node + npm
 
-This repository contains a CentOS 7.2 box for Vagrant. Python 3.5.3 is installed alongside the system Python (2.7.5). The Vagrant config uses Ansible roles to configure the box for the development environment, that should also be suitable for setting up a production server.
+This repository contains a CentOS 7.2 box for Vagrant. Python 3.5 and 3.6 are installed alongside the system Python (2.7.5). The Vagrant config uses Ansible roles to configure the box for the development environment, that should also be (mostly) suitable for setting up a production server.
 
-MS SQL is also supported as a Django database backend with the FreeTDS ODBC Driver to SQL Server. PostgreSQL 9.6, including the server, can be install optionally for those using PostgreSQL.
+PostgreSQL 9.6 is installed locally, server and all for full-stack local development. MS SQL is also supported as a Django database backend with the FreeTDS ODBC Driver to an external SQL Server.
 
-Django versions 1.8 and greater are supported, however, Django 1.11 or greater is recommended at the time of this writing for new projects. Django 1.11 is an LTS (Long Term Support) release, meaning it will be actively supported with bug fixes and security patches until at least April, 2020 (and probably longer): https://www.djangoproject.com/download/#supported-versions
+Django 1.11 or greater is recommended at the time of this writing for new projects. Django 1.11 is an LTS (Long Term Support) release, meaning it will be actively supported with bug fixes and security patches until at least April, 2020 (and probably longer): https://www.djangoproject.com/download/#supported-versions
 
 ## Compatibility & Prerequisites to Install
 
 ### Mac
 
-* Tested with Vagrant 1.9.5: https://releases.hashicorp.com/vagrant/1.9.5/vagrant_1.9.5_x86_64.dmg
-* Tested with VirtualBox 5.1.22: http://download.virtualbox.org/virtualbox/5.1.22/VirtualBox-5.1.22-115126-OSX.dmg
+* Tested with Vagrant 2.0.0: https://releases.hashicorp.com/vagrant/2.0.0/vagrant_2.0.0_x86_64.dmg
+* Tested with VirtualBox 5.1.26: http://download.virtualbox.org/virtualbox/5.1.26/VirtualBox-5.1.26-117224-OSX.dmg
 * Git is required: http://git-scm.com/downloads
 * Tested on: OS/X Yosemite, and El Capitan, and Sierra.
 
@@ -37,8 +37,8 @@ $ sudo dnf install VirtualBox
 
 ### Windows
 
-* Tested with Vagrant 1.9.5: https://releases.hashicorp.com/vagrant/1.9.5/vagrant_1.9.5.msi
-* Tested with VirtualBox 5.1.22: http://download.virtualbox.org/virtualbox/5.1.22/VirtualBox-5.1.22-115126-Win.exe
+* Tested with Vagrant 2.0.0: https://releases.hashicorp.com/vagrant/2.0.0/vagrant_2.0.0_x86_64.msi
+* Tested with VirtualBox 5.1.26: http://download.virtualbox.org/virtualbox/5.1.26/VirtualBox-5.1.26-117224-Win.exe
 * Git Bash is required, not the Windows Command Prompt (cmd.exe): https://git-for-windows.github.io/
     * In Git Bash, click the diamond shaped multi-colored icon in the upper left of the window, OPTIONS. You may want to go through the option list to increase your default window size, set up copy/paste shortcuts, and set up mouse selection for copy/paste.
 * On newer machines, ensure that you have virtualization enabled in BIOS (Google it for your machine's model).
@@ -47,11 +47,10 @@ $ sudo dnf install VirtualBox
 ## Get Started
 
 * Create and add a public SSH key to your git server (GitHub, GitLab, etc).
-
 * Clone the repository and bring up the virtual development environment. The first time you install the box, "vagrant up" will take a little while. Grab a cup of coffee or something!
 * Use a host name for your domain; for example, if you're a member of The Wharton School, you may want to use the command `VAGRANT_HOSTNAME="vagrant.wharton.upenn.edu" vagrant up` below. If you don't provide a hostname, it will be set to `vagrant.example.com`.
 
-``` bash
+```bash
 git clone https://github.com/wharton/python-vagrant-centos7.git
 cd python-vagrant-centos7
 VAGRANT_HOSTNAME="vagrant.my.domain.com" vagrant up
@@ -114,7 +113,7 @@ The Vagrant box comes with PostgreSQL 9.6. The `vagrant` user is set up as a Pos
 
 ```
 $ psql
-psql (9.6.3)
+psql (9.6.5)
 Type "help" for help.
 
 vagrant=# \?
