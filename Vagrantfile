@@ -1,6 +1,6 @@
 Vagrant.configure("2") do |config|
     config.vm.box = "bento/centos-7.2"
-    config.vm.box_url = "https://atlas.hashicorp.com/bento/boxes/centos-7.2/versions/2.2.3/providers/virtualbox.box"
+    config.vm.box_version = "2.3.1"
     config.vm.synced_folder ".", "/vagrant", id: "vagrant-root", :mount_options => ["dmode=777","fmode=777"]
 
     config.vm.provider "virtualbox" do |v|
@@ -9,6 +9,7 @@ Vagrant.configure("2") do |config|
         v.customize ["modifyvm", :id, "--cpuexecutioncap", "75"]
         v.customize ["modifyvm", :id, "--vram", "12"]
         v.customize ["modifyvm", :id, "--ioapic", "on"]
+        v.name = "python-vagrant-centos7"
     end
 
     # Set up a private IP that can be added to the host machine's hosts file
@@ -26,8 +27,9 @@ Vagrant.configure("2") do |config|
     config.vm.hostname = ENV['VAGRANT_HOSTNAME']
 
     config.vm.provision "ansible_local" do |ansible|
-        # ansible.verbose = "v"
         ansible.playbook = "provisioning/vagrant_playbook.yml"
+        ansible.compatibility_mode = "2.0"
+        # ansible.verbose = "v"
     end
 end
 
