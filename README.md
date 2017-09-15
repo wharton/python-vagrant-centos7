@@ -1,4 +1,4 @@
-# A CentOS 7.2 Vagrant Box with Python 3.5 via Ansible
+# A CentOS 7.2 Vagrant Box with Python 3.5 & 3.6 via Ansible
 
 * Apache 2.4, with mod_wsgi for running Django
 * FreeTDS drivers for MS SQL Server
@@ -192,11 +192,15 @@ In Windows 10, the "World Wide Web Publishing Service" automatically starts on p
 * Click the "Stop" button.
 * Click "OK".
 
+Maintainer:
+
+* Tim Allen (https://github.com/FlipperPA)
+
 Contributors:
 
-* Tim Allen (tallen@wharton.upenn.edu)
-* Gavin Burris (bug@wharton.upenn.edu)
-* Dave Roller (roller@wharton.upenn.edu)
+* Jane Eisenstein (https://github.com/janeeisenstein)
+* Gavin Burris (https://github.com/00gavin)
+* Dave Roller (https://github.com/rollerwhrtn)
 * Brian Jopling
 * Clay Wells
 
