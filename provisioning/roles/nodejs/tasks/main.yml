@@ -1,0 +1,13 @@
+---
+- name: Install Node.js RPM repository
+  yum:
+    name: https://rpm.nodesource.com/pub_7.x/el/7/x86_64/nodesource-release-el7-1.noarch.rpm
+    state: present
+
+- name: Install Node.js and development tools
+  yum:
+    name: '{{ item }}'
+  with_items:
+    - nodejs
+    - gcc-c++
+    - make

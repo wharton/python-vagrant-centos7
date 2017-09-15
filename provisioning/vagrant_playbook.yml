@@ -18,6 +18,7 @@
     - { role: redis, tags: ['cache', 'redis'] }
     - { role: postgresql, tags: ['postgresql']}
     - { role: postgresql_vagrant, tags: ['postgresql']}
+    - { role: nodejs, tags: ['nodejs', 'npm']}
     # The following line will use the Microsoft driver
     # We're using FreeTDS.
     # - { role: mssql, tags: ['sql'] }
