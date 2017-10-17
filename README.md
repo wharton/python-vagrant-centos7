@@ -108,6 +108,10 @@ $ ssh vagrant@vagrant.my.domain.com -p 2222
 At this point, you should change the default password for the vagrant user.
 You may also want to add/remove users soon.
 
+## Using Wharton Reasearch Programming's Cookiecutter 🍪🔪 template
+
+https://stash.wharton.upenn.edu/projects/RI/repos/cookiecutter.wrpdt/browse
+
 ## Using PostgreSQL & Creating a New Database for a Django Project
 
 The Vagrant box comes with PostgreSQL 9.6. The `vagrant` user is set up as a PostgreSQL superuser (in addition to the `postgres` user).
@@ -202,6 +206,7 @@ Contributors:
 * Jane Eisenstein (https://github.com/janeeisenstein)
 * Gavin Burris (https://github.com/00gavin)
 * Dave Roller (https://github.com/rollerwhrtn)
+* Shawn Zamechek (https://github.com/shawnzam/)
 * Brian Jopling
 * Clay Wells
 
