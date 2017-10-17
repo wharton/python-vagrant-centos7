@@ -1,10 +1,4 @@
 ---
-- name: Remove repository (and clean up left-over metadata)
-  yum_repository:
-    name: Node.js Packages for Enterprise Linux 7 - x86_64
-    state: absent
-  notify: yum-clean-metadata
-  
 - name: Install Node.js RPM repository
   yum_repository:
     name: nodejs
