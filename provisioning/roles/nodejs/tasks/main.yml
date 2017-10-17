@@ -1,9 +1,8 @@
 ---
 - name: Install Node.js RPM repository
-  yum_repository:
-    name: nodejs
-    description: NodeJS 8
-    baseurl: https://rpm.nodesource.com/pub_8.x/el/7/x86_64/
+  yum:
+    name: https://rpm.nodesource.com/pub_8.x/el/7/x86_64/nodejs-docs-8.4.0-1nodesource.el7.centos.noarch.rpm
+    state: present
 
 - name: Install Node.js and development tools
   yum:
