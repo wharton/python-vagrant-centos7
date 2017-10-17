@@ -1,7 +1,7 @@
 ---
 - name: Install Node.js RPM repository
   yum:
-    name: https://rpm.nodesource.com/pub_7.x/el/7/x86_64/nodesource-release-el7-1.noarch.rpm
+    name: https://rpm.nodesource.com/pub_8.x/el/7/x86_64/nodejs-devel-8.7.0-1nodesource.x86_64.rpm
     state: present
 
 - name: Install Node.js and development tools
