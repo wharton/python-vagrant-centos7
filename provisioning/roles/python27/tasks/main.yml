@@ -30,3 +30,8 @@
     - { line: '# virtualenvwrapper Setup' }
     - { line: 'export VIRTUALENV_PYTHON=/usr/bin/python3.6' }
     - { line: 'source /usr/bin/virtualenvwrapper.sh' }
+   
+# Set up Cookie Cutter system-wide
+- name: Install Cookie Cutter for Python 2.7
+  pip:
+    name: cookiecutter   

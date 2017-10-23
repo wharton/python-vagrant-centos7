@@ -5,7 +5,7 @@
 * PostgreSQL Drivers & Server
 * Node + npm
 
-This repository contains a CentOS 7.2 box for Vagrant. Python 3.5 and 3.6 are installed alongside the system Python (2.7.5). The Vagrant config uses Ansible roles to configure the box for the development environment, that should also be (mostly) suitable for setting up a production server.
+This repository contains a CentOS 7.2 box for Vagrant. Python 3.5 and 3.6 are installed alongside the system Python (2.7.5). The Vagrant config uses Ansible roles to configure the box for the development environment, that should also be (mostly) suitable for setting up a production server. `Cookiecutter`, `virtualenvwrapper`, and `Pygments` are installed with the system Python.
 
 PostgreSQL 9.6 is installed locally, server and all for full-stack local development. MS SQL is also supported as a Django database backend with the FreeTDS ODBC Driver to an external SQL Server.
 
@@ -202,6 +202,7 @@ Contributors:
 * Jane Eisenstein (https://github.com/janeeisenstein)
 * Gavin Burris (https://github.com/00gavin)
 * Dave Roller (https://github.com/rollerwhrtn)
+* Shawn Zamechek (https://github.com/shawnzam/)
 * Brian Jopling
 * Clay Wells
 
