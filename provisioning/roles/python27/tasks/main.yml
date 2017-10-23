@@ -17,7 +17,7 @@
     - { line: '# The line below allows syntax highlighting for files with the command "ccat".' }
     - { line: "alias ccat='pygmentize -O style=monokai -f terminal -g'" }
 
-# Set up virtualenvwrapper to use Python 3.5 by default
+# Set up virtualenvwrapper to use Python 3.6 by default
 - name: Install virtualenvwrapper for Python 2.7, using Python 3.6 default for virtualenvs
   pip:
     name: virtualenvwrapper
