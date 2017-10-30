@@ -126,12 +126,6 @@ CREATE DATABASE
 vagrant=# \q
 ```
 
-If you'd like to connect from a GUI on your local system, a script is available to open the firewall and configure PostgreSQL to allow connections from the host machine.
-
-```
-sudo /vagrant/assets/open_postgres_to_host.sh
-```
-
 ## Setting Up Django & virtualenv
 
 First, change to the directory set aside to hold user projects.
