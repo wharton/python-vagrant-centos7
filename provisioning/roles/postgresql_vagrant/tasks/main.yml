@@ -14,14 +14,14 @@
 - name: Copy PostgreSQL configuration files
   copy:
     src: "{{ item }}"
-    dest: /var/lib/pgsql/9.6/data
+    dest: /var/lib/pgsql/10/data
   with_items:
     - ../files/pg_hba.conf
     - ../files/postgresql.conf
 
 - name: Start PostgreSQL and enable at boot
   service:
-    name: postgresql-9.6
+    name: postgresql-10
     state: restarted
 
 - name: Open up PostgreSQL to the host machine

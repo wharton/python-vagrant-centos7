@@ -1,38 +1,38 @@
 ---
 - name: Install PostgreSQL YUM repository
   yum:
-    name: https://download.postgresql.org/pub/repos/yum/9.6/redhat/rhel-7-x86_64/pgdg-centos96-9.6-3.noarch.rpm
+    name: https://download.postgresql.org/pub/repos/yum/testing/10/redhat/rhel-7-x86_64/pgdg-redhat10-10-2.noarch.rpm
     state: present
 
-- name: Install PostgreSQL 9.6 Server
+- name: Install PostgreSQL 10 Server
   yum:
-    name: postgresql96-server
+    name: postgresql10-server
     state: present
 
-- name: Install PostgreSQL 9.6 devel package
+- name: Install PostgreSQL 10 devel package
   yum:
-    name: postgresql96-devel
+    name: postgresql10-devel
     state: present
 
-- name: Install PostgreSQL 9.6 contrib package
+- name: Install PostgreSQL 10 contrib package
   yum:
-    name: postgresql96-contrib
+    name: postgresql10-contrib
     state: present
 
-- name: Initialize PostgreSQL 9.6
-  command: /usr/pgsql-9.6/bin/postgresql96-setup initdb creates=/var/lib/pgsql/9.6/initdb.log
+- name: Initialize PostgreSQL 10
+  command: /usr/pgsql-10/bin/postgresql-10-setup initdb creates=/var/lib/pgsql/10/initdb.log
   become: true
   become_user: root
 
 - name: Create a symbolic link to pg_config binary so pip installs of psycopg2 work
   file:
-    src: /usr/pgsql-9.6/bin/pg_config
+    src: /usr/pgsql-10/bin/pg_config
     dest: /usr/bin/pg_config
     state: link
 
-- name: Ensure PostgreSQL 9.6 service is running
+- name: Ensure PostgreSQL 10 service is running
   service:
-    name: postgresql-9.6
+    name: postgresql-10
     state: started
     enabled: yes
 
