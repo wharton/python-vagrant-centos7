@@ -198,6 +198,7 @@ Contributors:
 * Gavin Burris (https://github.com/00gavin)
 * Dave Roller (https://github.com/rollerwhrtn)
 * Shawn Zamechek (https://github.com/shawnzam/)
+* Todd Seidelmann (https://github.com/seidelma/)
 * Brian Jopling
 * Clay Wells
 
