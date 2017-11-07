@@ -28,7 +28,7 @@ Vagrant.configure("2") do |config|
 
     config.vm.provision "ansible_local" do |ansible|
         ansible.playbook = "provisioning/vagrant_playbook.yml"
-        ansible.compatibility_mode = "2.0"
+        # ansible.compatibility_mode = "2.0"
         # ansible.verbose = "v"
     end
 end
