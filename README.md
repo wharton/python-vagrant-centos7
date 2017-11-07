@@ -7,7 +7,7 @@
 
 This repository contains a CentOS 7.2 box for Vagrant. Python 3.5 and 3.6 are installed alongside the system Python (2.7.5). The Vagrant config uses Ansible roles to configure the box for the development environment, that should also be (mostly) suitable for setting up a production server. `Cookiecutter`, `virtualenvwrapper`, and `Pygments` are installed with the system Python.
 
-PostgreSQL 9.6 is installed locally, server and all for full-stack local development. MS SQL is also supported as a Django database backend with the FreeTDS ODBC Driver to an external SQL Server.
+PostgreSQL 10 is installed locally, server and all for full-stack local development. MS SQL is also supported as a Django database backend with the FreeTDS ODBC Driver to an external SQL Server.
 
 Django 1.11 or greater is recommended at the time of this writing for new projects. Django 1.11 is an LTS (Long Term Support) release, meaning it will be actively supported with bug fixes and security patches until at least April, 2020 (and probably longer): https://www.djangoproject.com/download/#supported-versions
 
@@ -43,6 +43,7 @@ $ sudo dnf install VirtualBox
     * In Git Bash, click the diamond shaped multi-colored icon in the upper left of the window, OPTIONS. You may want to go through the option list to increase your default window size, set up copy/paste shortcuts, and set up mouse selection for copy/paste.
 * On newer machines, ensure that you have virtualization enabled in BIOS (Google it for your machine's model).
 * Tested on: Windows 7, 8, and 10.
+* There is currently a bug in Vagrant with the terminal settings. If you type `vagrant ssh` and it hangs, change your terminal settings in git-bash to be `xterm-256color` by clicking the icon in the top left of the terminal windows, Options, Terminal, and selecting `xterm-256color` in the Type dropdown.
 
 ## Get Started
 
@@ -114,7 +115,7 @@ The Vagrant box comes with PostgreSQL 9.6. The `vagrant` user is set up as a Pos
 
 ```
 $ psql
-psql (9.6.5)
+psql (10.0)
 Type "help" for help.
 
 vagrant=# \?
