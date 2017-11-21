@@ -9,6 +9,7 @@ Vagrant.configure("2") do |config|
         v.customize ["modifyvm", :id, "--cpuexecutioncap", "75"]
         v.customize ["modifyvm", :id, "--vram", "12"]
         v.customize ["modifyvm", :id, "--ioapic", "on"]
+        v.customize ["modifyvm", :id, "--audio", "none"]
         v.name = "python-vagrant-centos7"
     end
 
