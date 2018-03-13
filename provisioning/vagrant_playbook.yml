@@ -13,15 +13,14 @@
     - { role: python36, tags: ['python'] }
     - { role: httpd, tags: ['httpd'] }
     - { role: httpd_mod_wsgi, tags: ['python', 'httpd'] }
-    - { role: freetds, tags: ['sql', 'freetds'] }
+    - { role: freetds, tags: ['sql', 'sql server', 'freetds'] }
+    - { role: mssql, tags: ['sql', 'sql server', 'msodbc'] }
     - { role: elastic_search, tags: ['search', 'elastic'] }
     - { role: redis, tags: ['cache', 'redis'] }
     - { role: postgresql, tags: ['postgresql']}
     - { role: postgresql_vagrant, tags: ['postgresql']}
     - { role: nodejs, tags: ['nodejs', 'npm']}
-    # The following line will use the Microsoft driver
-    # We're using FreeTDS.
-    # - { role: mssql, tags: ['sql'] }
+
     # The following line will perform a yum update.
     # This would take a while!
     # - { role: yum_update, tags: ['yum'] }
