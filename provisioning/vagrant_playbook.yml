@@ -9,7 +9,6 @@
     - { role: repository_ius, tags: ['yum'] }
     - { role: yum_packages, tags: ['yum'] }
     - { role: python27, tags: ['python'] }
-    - { role: python35, tags: ['python'] }
     - { role: python36, tags: ['python'] }
     - { role: httpd, tags: ['httpd'] }
     - { role: httpd_mod_wsgi, tags: ['python', 'httpd'] }
