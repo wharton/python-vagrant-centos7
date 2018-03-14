@@ -5,7 +5,7 @@
     state: present
   with_items:
     - redis32u
-    - python35u-redis
+    - python36u-redis
 
 - name: Make sure redis is started at boot.
   service:
