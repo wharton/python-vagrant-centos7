@@ -1,4 +1,5 @@
 Vagrant.configure("2") do |config|
+    vm_name = 'default'
     config.vm.box = "bento/centos-7.4"
     config.vm.box_version = "201802.02.0"
     config.vm.synced_folder ".", "/vagrant", id: "vagrant-root", :mount_options => ["dmode=777","fmode=777"]
@@ -24,8 +25,22 @@ Vagrant.configure("2") do |config|
   	config.vm.network "forwarded_port", guest: 8080, host: 8080, auto_correct: false
   	config.vm.network "forwarded_port", guest: 8100, host: 8100, auto_correct: false
 
-    ENV['VAGRANT_HOSTNAME'] = "vagrant.example.com" if ENV['VAGRANT_HOSTNAME'].nil?
-    config.vm.hostname = ENV['VAGRANT_HOSTNAME']
+    vagrant_arg = ARGV[0]
+
+    if ENV['VAGRANT_HOSTNAME'].nil? and Dir.glob("#{File.dirname(__FILE__)}/.vagrant/machines/#{vm_name}/virtualbox/id").empty? and vagrant_arg == 'up'
+        print "A hostname has not been provided. Please create one, or hit enter for the default.\n"
+        print "Enter your hostname [vagrant.example.com]: "
+        config.vm.hostname = STDIN.gets.chomp
+        # If no input, sync the default ./html directory to /vagrant/html in guest
+        if config.vm.hostname == ''
+            config.vm.hostname = "vagrant.example.com"
+        end
+    else
+        config.vm.hostname = ENV['VAGRANT_HOSTNAME']
+    end
+
+    # ENV['VAGRANT_HOSTNAME'] = "vagrant.example.com" if ENV['VAGRANT_HOSTNAME'].nil?
+    # config.vm.hostname = ENV['VAGRANT_HOSTNAME']
 
     config.vm.provision "ansible_local" do |ansible|
         ansible.playbook = "provisioning/vagrant_playbook.yml"
