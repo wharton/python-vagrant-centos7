@@ -3,3 +3,5 @@
   yum:
     name: '*'
     state: latest
+  environment:
+    ACCEPT_EULA: "Y"
