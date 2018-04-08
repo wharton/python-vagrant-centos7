@@ -43,7 +43,6 @@ $ sudo dnf install VirtualBox
     * In Git Bash, click the diamond shaped multi-colored icon in the upper left of the window, OPTIONS. You may want to go through the option list to increase your default window size, set up copy/paste shortcuts, and set up mouse selection for copy/paste.
 * On newer machines, ensure that you have virtualization enabled in BIOS (Google it for your machine's model).
 * Tested on: Windows 7, 8, and 10.
-* There is currently a bug in Vagrant with the terminal settings. If you type `vagrant ssh` and it hangs, change your terminal settings in git-bash to be `xterm-256color` by clicking the icon in the top left of the terminal windows, Options, Terminal, and selecting `xterm-256color` in the Type dropdown.
 
 ## Get Started
 
