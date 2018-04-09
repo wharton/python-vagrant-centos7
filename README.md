@@ -13,9 +13,18 @@ Django 1.11 or greater is recommended at the time of this writing for new projec
 
 ## Compatibility & Prerequisites to Install
 
+### Windows
+
+* Tested with Vagrant 2.0.3: https://releases.hashicorp.com/vagrant/2.0.3/vagrant_2.0.3_x86_64.msi
+* Tested with VirtualBox 5.2.6: https://download.virtualbox.org/virtualbox/5.2.6/VirtualBox-5.2.6-120293-Win.exe
+* Git Bash is highly recommended, not the Windows Command Prompt (cmd.exe): https://git-for-windows.github.io/
+    * In Git Bash, click the diamond shaped multi-colored icon in the upper left of the window, OPTIONS. You may want to go through the option list to increase your default window size, set up copy/paste shortcuts, and set up mouse selection for copy/paste.
+* On newer machines, ensure that you have virtualization enabled in BIOS (Google it for your machine's model).
+* Tested on: Windows 7, 8, and 10.
+
 ### Mac
 
-* Tested with Vagrant 2.0.2: https://releases.hashicorp.com/vagrant/2.0.2/vagrant_2.0.2_x86_64.dmg
+* Tested with Vagrant 2.0.3: https://releases.hashicorp.com/vagrant/2.0.3/vagrant_2.0.3_x86_64.dmg
 * Tested with VirtualBox https://download.virtualbox.org/virtualbox/5.2.6/VirtualBox-5.2.6-120293-OSX.dmg
 * Git is required: http://git-scm.com/downloads
 * Tested on: OS/X Yosemite, and El Capitan, and Sierra.
@@ -34,16 +43,6 @@ These are available via the package manager.
 $ sudo dnf install vagrant
 $ sudo dnf install VirtualBox
 ```
-
-### Windows
-
-* Tested with Vagrant 2.0.2: https://releases.hashicorp.com/vagrant/2.0.2/vagrant_2.0.2_x86_64.msi
-* Tested with VirtualBox 5.2.6: https://download.virtualbox.org/virtualbox/5.2.6/VirtualBox-5.2.6-120293-Win.exe
-* Git Bash is required, not the Windows Command Prompt (cmd.exe): https://git-for-windows.github.io/
-    * In Git Bash, click the diamond shaped multi-colored icon in the upper left of the window, OPTIONS. You may want to go through the option list to increase your default window size, set up copy/paste shortcuts, and set up mouse selection for copy/paste.
-* On newer machines, ensure that you have virtualization enabled in BIOS (Google it for your machine's model).
-* Tested on: Windows 7, 8, and 10.
-* There is currently a bug in Vagrant with the terminal settings. If you type `vagrant ssh` and it hangs, change your terminal settings in git-bash to be `xterm-256color` by clicking the icon in the top left of the terminal windows, Options, Terminal, and selecting `xterm-256color` in the Type dropdown.
 
 ## Get Started
 
