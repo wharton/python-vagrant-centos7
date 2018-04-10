@@ -19,9 +19,9 @@ Welcome to Python 3 on CentOS 7.2! Try out Django:
 (1) Install Django:
     $ pip install django
 (2) Move to the projects directory:
-    $ cd /vagrant/projects
+    $ cd projects
 (3) Start your Django project:
-    $ django-admin.py startproject myproject
+    $ django-admin startproject myproject
 (4) Enter your project and fire up runserver:
     $ cd myproject
     $ python manage.py runserver 0:8000
