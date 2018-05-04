@@ -18,3 +18,4 @@
    - libffi-devel
    - libjpeg-turbo-devel
    - giflib
+   - tmux
