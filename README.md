@@ -15,8 +15,8 @@ Django 1.11 or greater is recommended at the time of this writing for new projec
 
 ### Windows
 
-* Tested with Vagrant 2.0.3: https://releases.hashicorp.com/vagrant/2.0.3/vagrant_2.0.3_x86_64.msi
-* Tested with VirtualBox 5.2.6: https://download.virtualbox.org/virtualbox/5.2.6/VirtualBox-5.2.6-120293-Win.exe
+* Tested with VirtualBox 5.2.10: https://download.virtualbox.org/virtualbox/5.2.10/VirtualBox-5.2.10-122406-Win.exe
+* Tested with Vagrant 2.1.1: https://releases.hashicorp.com/vagrant/2.1.1/vagrant_2.1.1_x86_64.msi
 * Git Bash is highly recommended, not the Windows Command Prompt (cmd.exe): https://git-for-windows.github.io/
     * In Git Bash, click the diamond shaped multi-colored icon in the upper left of the window, OPTIONS. You may want to go through the option list to increase your default window size, set up copy/paste shortcuts, and set up mouse selection for copy/paste.
 * On newer machines, ensure that you have virtualization enabled in BIOS (Google it for your machine's model).
@@ -24,15 +24,15 @@ Django 1.11 or greater is recommended at the time of this writing for new projec
 
 ### Mac
 
-* Tested with Vagrant 2.0.3: https://releases.hashicorp.com/vagrant/2.0.3/vagrant_2.0.3_x86_64.dmg
-* Tested with VirtualBox https://download.virtualbox.org/virtualbox/5.2.6/VirtualBox-5.2.6-120293-OSX.dmg
+* Tested with VirtualBox 5.2.10: https://download.virtualbox.org/virtualbox/5.2.10/VirtualBox-5.2.10-122088-OSX.dmg
+* Tested with Vagrant 2.1.1: https://releases.hashicorp.com/vagrant/2.1.1/vagrant_2.1.1_x86_64.dmg
 * Git is required: http://git-scm.com/downloads
 * Tested on: OS/X Yosemite, and El Capitan, and Sierra.
 
 ### Linux
 
-* Vagrant 1.9.5 can be downloaded here: https://releases.hashicorp.com/vagrant/1.9.5/
-* VirtualBox 5.1.22 can be downloaded here: http://download.virtualbox.org/virtualbox/5.1.22/
+* VirtualBox 5.2.10 can be downloaded here: https://www.virtualbox.org/wiki/Linux_Downloads
+* Vagrant 2.1.1 can be downloaded here: https://releases.hashicorp.com/vagrant/2.1.1/
 * On newer machines, ensure that you have virtualization enabled in BIOS (duckduckgo it for your machine's model).
 
 **Fedora 25, CentOS 7**
