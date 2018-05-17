@@ -18,7 +18,7 @@
     dest: /etc/motd
     mode: 0644
 
-- name: Set 'ccat' alias in global bashrc
+- name: Set 'menu' alias in global bashrc
   lineinfile:
     dest: /etc/bashrc
     line: "{{ item }}"
