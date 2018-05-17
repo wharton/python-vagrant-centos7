@@ -1,4 +1,4 @@
-Welcome to Python 3 on CentOS 7.2! Try out Django:
+Welcome to Python 3 on CentOS 7.4! Try out Django:
 
 (0) Create a virtualenv:
     $ mkvirtualenv myproject
