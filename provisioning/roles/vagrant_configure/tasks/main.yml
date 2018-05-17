@@ -49,10 +49,3 @@
     owner: vagrant
     group: vagrant
     state: link
-
-- name: Copy in welcome.txt file
-  copy:
-    src: "../files/welcome.txt"
-    dest: /home/vagrant/welcome.txt
-    mode: 0644
-
