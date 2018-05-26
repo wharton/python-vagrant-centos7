@@ -31,7 +31,7 @@
     dest: /etc/bashrc
     line: "{{ item }}"
   with_items:
-    - '# The line below aliases runserver to Django's runserver command
+    - "# The line below aliases runserver to Django's runserver command"
     - "alias runserver='python manage.py runserver 0:8000'"
 
 - name: Set git tab completion in global bashrc
