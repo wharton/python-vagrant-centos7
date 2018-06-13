@@ -18,13 +18,21 @@
     dest: /etc/motd
     mode: 0644
 
-- name: Set 'ccat' alias in global bashrc
+- name: Set 'menu' alias in global bashrc
   lineinfile:
     dest: /etc/bashrc
     line: "{{ item }}"
   with_items:
     - '# The line below aliases the menu command to show the motd.'
     - "alias menu='cat /etc/motd'"
+
+- name: Set 'runserver' alias in global bashrc
+  lineinfile:
+    dest: /etc/bashrc
+    line: "{{ item }}"
+  with_items:
+    - "# The line below aliases runserver to Django's runserver command"
+    - "alias runserver='python manage.py runserver 0:8000'"
 
 - name: Set git tab completion in global bashrc
   lineinfile:
@@ -41,10 +49,3 @@
     owner: vagrant
     group: vagrant
     state: link
-
-- name: Copy in welcome.txt file
-  copy:
-    src: "../files/welcome.txt"
-    dest: /home/vagrant/welcome.txt
-    mode: 0644
-
