@@ -1,7 +1,7 @@
 Vagrant.configure("2") do |config|
     vm_name = 'default'
-    config.vm.box = "bento/centos-7.4"
-    config.vm.box_version = "201803.24.0"
+    config.vm.box = "bento/centos-7.5"
+    config.vm.box_version = "201805.15.0"
     config.vm.synced_folder ".", "/vagrant", id: "vagrant-root", :mount_options => ["dmode=777","fmode=777"]
 
     config.vm.provider "virtualbox" do |v|
