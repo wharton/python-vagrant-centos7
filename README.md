@@ -1,13 +1,13 @@
 # A CentOS 7.5 Vagrant Box with Python 3.5 & 3.6 via Ansible
 
 * Apache 2.4, with mod_wsgi for running Django
-* FreeTDS drivers for MS SQL Server
+* Microsoft ODBC & FreeTDS drivers for MS SQL Server
 * PostgreSQL Drivers & Server
 * Node + npm
 
 This repository contains a CentOS 7.5 box for Vagrant. Python 3.5 and 3.6 are installed alongside the system Python (2.7.5). The Vagrant config uses Ansible roles to configure the box for the development environment, that should also be (mostly) suitable for setting up a production server. `Cookiecutter`, `virtualenvwrapper`, and `Pygments` are installed with the system Python.
 
-PostgreSQL 10 server is installed locally and all for full-stack local development. MS SQL is also supported as a Django database backend with the FreeTDS ODBC Driver to an external SQL Server.
+PostgreSQL 10 server is installed locally and all for full-stack local development. MS SQL is also supported as a Django database backend with either the Microsoft provided ODBC or the FreeTDS ODBC Driver to an external SQL Server.
 
 Django 1.11 or greater is recommended at the time of this writing for new projects. Django 1.11 is an LTS (Long Term Support) release, meaning it will be actively supported with bug fixes and security patches until at least April, 2020 (and probably longer): https://www.djangoproject.com/download/#supported-versions
 
