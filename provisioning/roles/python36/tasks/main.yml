@@ -7,3 +7,4 @@
     - python36u
     - python36u-pip
     - python36u-devel
+    - python36u-test
