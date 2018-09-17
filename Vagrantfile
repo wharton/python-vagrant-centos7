@@ -31,7 +31,7 @@ Vagrant.configure("2") do |config|
         print "A hostname has not been provided. Please create one, or hit enter for the default.\n"
         print "Enter your hostname [vagrant.example.com]: "
         config.vm.hostname = STDIN.gets.chomp
-        # If no input, sync the default ./html directory to /vagrant/html in guest
+
         if config.vm.hostname == ''
             config.vm.hostname = "vagrant.example.com"
         end
@@ -39,12 +39,8 @@ Vagrant.configure("2") do |config|
         config.vm.hostname = ENV['VAGRANT_HOSTNAME']
     end
 
-    # ENV['VAGRANT_HOSTNAME'] = "vagrant.example.com" if ENV['VAGRANT_HOSTNAME'].nil?
-    # config.vm.hostname = ENV['VAGRANT_HOSTNAME']
-
     config.vm.provision "ansible_local" do |ansible|
         ansible.playbook = "provisioning/vagrant_playbook.yml"
-        # ansible.compatibility_mode = "2.0"
         # ansible.verbose = "v"
     end
 end
