@@ -6,20 +6,18 @@
 
 - name: Ensure utf16 packages are not installed to avoid conflicts
   yum:
-    name: "{{ item }} "
+    name: 
+      - unixODBC-utf16
+      - unixODBC-utf16-devel
     state: absent
-  with_items:
-    - unixODBC-utf16
-    - unixODBC-utf16-devel
 
 - name: Install Microsoft ODBC Driver 17 for SQL Server for Linux
   yum:
-    name: "{{ item }}"
+    name: 
+      - msodbcsql17
+      - mssql-tools
+      - unixODBC-devel
     state: present
-  with_items:
-    - msodbcsql17
-    - mssql-tools
-    - unixODBC-devel
   environment:
     ACCEPT_EULA: "Y"
 

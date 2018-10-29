@@ -5,17 +5,16 @@
     state: present
 - name: Install vim, vind-utils, and dependencies for pip installs with yum
   yum: 
-    name: '{{ item }}'
+    name: 
+      - vim
+      - bind-utils
+      - zlib-devel
+      - sqlite-devel
+      - bzip2-devel
+      - graphviz-devel
+      - openssl-devel
+      - libffi-devel
+      - libjpeg-turbo-devel
+      - giflib
+      - tmux
     state: present
-  with_items:
-   - vim
-   - bind-utils
-   - zlib-devel
-   - sqlite-devel
-   - bzip2-devel
-   - graphviz-devel
-   - openssl-devel
-   - libffi-devel
-   - libjpeg-turbo-devel
-   - giflib
-   - tmux

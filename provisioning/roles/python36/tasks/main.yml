@@ -1,10 +1,9 @@
 ---
 - name: Install Python 3.6 from IUS
   yum:
-    name: '{{ item }}'
+    name:
+      - python36u
+      - python36u-pip
+      - python36u-devel
+      - python36u-test
     state: present
-  with_items:
-    - python36u
-    - python36u-pip
-    - python36u-devel
-    - python36u-test

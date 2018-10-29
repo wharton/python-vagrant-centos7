@@ -1,11 +1,10 @@
 ---
 - name: Install redis
   yum:
-    name: "{{ item }}"
+    name: 
+      - redis32u
+      - python36u-redis
     state: present
-  with_items:
-    - redis32u
-    - python36u-redis
 
 - name: Make sure redis is started at boot.
   service:

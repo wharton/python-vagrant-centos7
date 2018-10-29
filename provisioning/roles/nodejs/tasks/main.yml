@@ -6,8 +6,7 @@
 
 - name: Install Node.js and development tools
   yum:
-    name: '{{ item }}'
-  with_items:
-    - nodejs
-    - gcc-c++
-    - make
+    name: 
+      - nodejs
+      - gcc-c++
+      - make
