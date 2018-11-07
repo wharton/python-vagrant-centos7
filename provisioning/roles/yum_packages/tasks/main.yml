@@ -17,4 +17,5 @@
       - libjpeg-turbo-devel
       - giflib
       - tmux
+      - libmemcached-devel
     state: present
