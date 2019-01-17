@@ -1,11 +1,27 @@
 Vagrant.configure("2") do |config|
+    # Guest VM Name, CentOS version for base box, shared folder
     vm_name = 'default'
     config.vm.box = "bento/centos-7.6"
     config.vm.box_version = "201812.27.0"
     config.vm.synced_folder ".", "/vagrant", id: "vagrant-root", :mount_options => ["dmode=777","fmode=777"]
 
+    # How much memory should we use?
+    vagrant_arg = ARGV[0]
+    if ENV['VAGRANT_MEMORY'].nil? and Dir.glob("#{File.dirname(__FILE__)}/.vagrant/machines/#{vm_name}/virtualbox/id").empty? and vagrant_arg == 'up'
+        print "How much memory would you like the guest virtual machine to use in megabytes?\n"
+        print "Memory [3072]: "
+        vm_memory = STDIN.gets.chomp
+
+        if vm_memory == ''
+            vm_memory = "3072"
+        end
+    else
+        vm_memory = ENV['VAGRANT_MEMORY']
+    end
+
+    # Guest VM settings
     config.vm.provider "virtualbox" do |v|
-        v.customize ["modifyvm", :id, "--memory", "3072"]
+        v.customize ["modifyvm", :id, "--memory", vm_memory]
         v.customize ["modifyvm", :id, "--cpus", "2"]
         v.customize ["modifyvm", :id, "--cpuexecutioncap", "75"]
         v.customize ["modifyvm", :id, "--vram", "12"]
@@ -25,8 +41,7 @@ Vagrant.configure("2") do |config|
   	config.vm.network "forwarded_port", guest: 8080, host: 8080, auto_correct: false
   	config.vm.network "forwarded_port", guest: 8100, host: 8100, auto_correct: false
 
-    vagrant_arg = ARGV[0]
-
+    # Set a hostname
     if ENV['VAGRANT_HOSTNAME'].nil? and Dir.glob("#{File.dirname(__FILE__)}/.vagrant/machines/#{vm_name}/virtualbox/id").empty? and vagrant_arg == 'up'
         print "A hostname has not been provided. Please create one, or hit enter for the default.\n"
         print "Enter your hostname [vagrant.example.com]: "
