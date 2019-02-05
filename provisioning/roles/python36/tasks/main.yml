@@ -18,12 +18,18 @@
     block: |
       export VENV_HOME=~/.venvs
       export VENV_PYTHON=/usr/bin/python3.6
+      fn_workon() {
+          echo "Activating venv ${1}..."
+          . "${VENV_HOME}/${1}/bin/activate"
+      }
+      alias workon=fn_workon
       fn_mkvirtualenv() {
           if [ -z "${VENV_HOME}" ]; then
               echo "VENV_HOME is not set; we don't know where to create your venv."
           else
               echo "Creating a new venv at: ${VENV_HOME}/${1}..."
               ${VENV_PYTHON} -m venv "${VENV_HOME}/${1}"
+              fn_workon "${1}"
           fi
       }
       alias mkvirtualenv=fn_mkvirtualenv
@@ -31,8 +37,3 @@
           cd "${VENV_HOME}/${1}"
       }
       alias cdvirtualenv=fn_cdvirtualenv
-      fn_workon() {
-          echo "Activating venv ${1}..."
-          . "${VENV_HOME}/${1}/bin/activate"
-      }
-      alias workon=fn_workon
