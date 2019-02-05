@@ -7,3 +7,32 @@
       - python36u-devel
       - python36u-test
     state: present
+
+- name: Set up aliases for virtualenvwrapper to use venv in global bashrc
+  blockinfile:
+    path: /etc/bashrc
+    state: present
+    marker: "# virtualenvwrapper aliases for venv"
+    marker_begin: "BEGIN"
+    marker_end: "END"
+    block: |
+      export VENV_HOME=~/.venvs
+      export VENV_PYTHON=/usr/bin/python3.6
+      fn_mkvirtualenv() {
+          if [ -z "${VENV_HOME}" ]; then
+              echo "VENV_HOME is not set; we don't know where to create your venv."
+          else
+              echo "Creating a new venv at: ${VENV_HOME}/${1}..."
+              ${VENV_PYTHON} -m venv "${VENV_HOME}/${1}"
+          fi
+      }
+      alias mkvirtualenv=fn_mkvirtualenv
+      fn_cdvirtualenv() {
+          cd "${VENV_HOME}/${1}"
+      }
+      alias cdvirtualenv=fn_cdvirtualenv
+      fn_workon() {
+          echo "Activating venv ${1}..."
+          . "${VENV_HOME}/${1}/bin/activate"
+      }
+      alias workon=fn_workon

@@ -17,20 +17,6 @@
     - { line: '# The line below allows syntax highlighting for files with the command "ccat".' }
     - { line: "alias ccat='pygmentize -O style=monokai -f terminal -g'" }
 
-# Set up virtualenvwrapper to use Python 3.6 by default
-- name: Install virtualenvwrapper for Python 2.7, using Python 3.6 default for virtualenvs
-  pip:
-    name: virtualenvwrapper
-
-- name: Set virtualenvwrapper in global bashrc
-  lineinfile:
-    dest: /etc/bashrc
-    line: "{{ item.line }}"
-  with_items:
-    - { line: '# virtualenvwrapper Setup' }
-    - { line: 'export VIRTUALENV_PYTHON=/usr/bin/python3.6' }
-    - { line: 'source /usr/bin/virtualenvwrapper.sh' }
-   
 # Set up Cookie Cutter system-wide
 - name: Install Cookie Cutter for Python 2.7
   pip:
