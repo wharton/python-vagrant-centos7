@@ -33,6 +33,24 @@
           fi
       }
       alias mkvirtualenv=fn_mkvirtualenv
+      fn_rmvirtualenv() {
+          if [ -z "${VENV_HOME}" ]; then
+              echo "VENV_HOME is not set; not removing."
+          else
+              echo "Removing venv at: ${VENV_HOME}/${1}..."
+              deactivate 2>/dev/null
+              rm -rf "${VENV_HOME}/${1}"
+          fi
+      }
+      alias rmvirtualenv=fn_rmvirtualenv
+      fn_lsvirtualenv() {
+          if [ -z "${VENV_HOME}" ]; then
+              echo "VENV_HOME is not set; can not show venvs."
+          else
+              ll "${VENV_HOME}/"
+          fi
+      }
+      alias lsvirtualenv=fn_lsvirtualenv
       fn_cdvirtualenv() {
           cd "${VENV_HOME}/${1}"
       }
