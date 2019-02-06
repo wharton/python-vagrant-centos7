@@ -30,6 +30,8 @@
               echo "Creating a new venv at: ${VENV_HOME}/${1}..."
               ${VENV_PYTHON} -m venv "${VENV_HOME}/${1}"
               fn_workon "${1}"
+              echo "Upgradging to latest pip..."
+              pip install --upgrade pip
           fi
       }
       alias mkvirtualenv=fn_mkvirtualenv
