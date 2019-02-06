@@ -45,6 +45,10 @@ $ sudo dnf install vagrant
 $ sudo dnf install VirtualBox
 ```
 
+## Additional Roles Not Installed by Default
+
+The Ansible playbook for the installation is located at `provisioning/vagrant_playbook.yml`. Several additional roles are commented out that can be added, including `elastic_search`, `redis`, `httpd` (with `httpd_mod_wsgi`), `nodejs`, and a `yum_update` role. These are not included by default, but can be uncommented if you wish you use them.
+
 ## Get Started
 
 * Create and add a public SSH key to your git server (GitHub, GitLab, etc).
