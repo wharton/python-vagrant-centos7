@@ -10,16 +10,31 @@
     - { role: yum_packages, tags: ['yum'] }
     - { role: python27, tags: ['python'] }
     - { role: python36, tags: ['python'] }
-    - { role: httpd, tags: ['httpd'] }
-    - { role: httpd_mod_wsgi, tags: ['python', 'httpd'] }
     - { role: freetds, tags: ['sql', 'sql server', 'freetds'] }
     - { role: mssql, tags: ['sql', 'sql server', 'msodbc'] }
-    - { role: elastic_search, tags: ['search', 'elastic'] }
-    - { role: redis, tags: ['cache', 'redis'] }
     - { role: postgresql, tags: ['postgresql']}
     - { role: postgresql_vagrant, tags: ['postgresql']}
-    - { role: nodejs, tags: ['nodejs', 'npm']}
 
-    # The following line will perform a yum update.
-    # This would take a while!
+    ######################################################
+    # These roles may be added at the user's discretion  #
+    # They are not necessarily required for development. #
+    ######################################################
+
+    # - { role: elastic_search, tags: ['search', 'elastic'] }
+    # - { role: redis, tags: ['cache', 'redis'] }
+    # - { role: httpd, tags: ['httpd'] }
+    # - { role: httpd_mod_wsgi, tags: ['python', 'httpd'] }
+
+    ################################################
+    # NodeJS can be added as well, but is best run #
+    # locally on the machine.                      #
+    ################################################
+
+    # - { role: nodejs, tags: ['nodejs', 'npm']}
+
+    #################################################
+    # The following line will perform a yum update. #
+    # This would take a while!                      #
+    #################################################
+
     # - { role: yum_update, tags: ['yum'] }
