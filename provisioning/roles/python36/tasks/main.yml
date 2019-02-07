@@ -19,18 +19,23 @@
       export VENV_HOME=~/.venvs
       export VENV_PYTHON=/usr/bin/python3.6
       fn_workon() {
-          export VENV_CURRENT="${VENV_HOME}/${1}"
-          # Run commands before activation
-          if [ -f "${VENV_CURRENT}/pre_activate.sh" ]; then
-              . "${VENV_CURRENT}/pre_activate.sh"
-          fi
+          if [ -f "${VENV_HOME}/${1}/bin/activate" ]; then
+              export VENV_CURRENT="${VENV_HOME}/${1}"
+              # Run commands before activation
+              if [ -f "${VENV_CURRENT}/pre_activate.sh" ]; then
+                  . "${VENV_CURRENT}/pre_activate.sh"
+              fi
 
-          echo "Activating venv ${1}..."
-          . "${VENV_CURRENT}/bin/activate"
+              echo "Activating venv ${1}..."
+              . "${VENV_CURRENT}/bin/activate"
 
-          # Run commands after activation
-          if [ -f "${VENV_CURRENT}/post_activate.sh" ]; then
-              . "${VENV_CURRENT}/post_activate.sh"
+              # Run commands after activation
+              if [ -f "${VENV_CURRENT}/post_activate.sh" ]; then
+                  . "${VENV_CURRENT}/post_activate.sh"
+              fi
+          else
+              echo "Could not find the venv '${1}'. Here is a list of venvs:"
+              fn_lsvirtualenv
           fi
       }
       alias workon=fn_workon
@@ -73,7 +78,7 @@
           if [ -z "${VENV_HOME}" ]; then
               echo "VENV_HOME is not set; can not show venvs."
           else
-              ll "${VENV_HOME}/"
+              ls "${VENV_HOME}/" -1
           fi
       }
       alias lsvirtualenv=fn_lsvirtualenv
