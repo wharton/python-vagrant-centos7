@@ -8,7 +8,6 @@ Vagrant.configure("2") do |config|
 
     # Guest VM settings
     config.vm.provider "virtualbox" do |v|
-    # How much memory should we use?
         v.customize ["modifyvm", :id, "--memory", 3072]
         v.customize ["modifyvm", :id, "--cpus", "2"]
         v.customize ["modifyvm", :id, "--cpuexecutioncap", "75"]
