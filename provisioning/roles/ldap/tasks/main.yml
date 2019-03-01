@@ -53,18 +53,20 @@
     dest: /var/lib/ldap/DB_CONFIG
     mode: 0600
   
-- name: Generate a random string for LDAP manager password 
-  shell: /usr/bin/dd if=/dev/urandom bs=16 count=1 | /usr/bin/base64 | /usr/bin/head -c 16
-  register: ldap_mgr_gen_cmd
-
-- name: Register LDAP manager password with Ansible
+- name: Generate random password for LDAP manager account
+  vars:
+    ldap_passwd: "{{ lookup('password', '/dev/null') }}"
   set_fact: 
-    ldap_mgr_passwd: "{{ ldap_mgr_gen_cmd.stdout }}"
+      ldap_mgr_passwd: "{{ ldap_passwd }}"
+- name: Generate random password for LDAP authenticator account
+  vars:
+    ldap_passwd: "{{ lookup('password', '/dev/null') }}"
+  set_fact:
+      ldap_auth_passwd: "{{ ldap_passwd }}"
 
 - name: Hash the LDAP manager password
   shell: slappasswd -s "{{ ldap_mgr_passwd }}"
   register: ldap_mgr_hash_cmd
-
 - name: Register LDAP manager password hash with Ansible
   set_fact:
     ldap_mgr_passwd_hash: "{{ ldap_mgr_hash_cmd.stdout }}"
@@ -76,18 +78,9 @@
   debug:
     var: ldap_mgr_passwd_hash
 
-- name: Generate a random string for LDAP authenticator password
-  shell: /usr/bin/dd if=/dev/urandom bs=16 count=1 | /usr/bin/base64 | /usr/bin/head -c 16
-  register: ldap_auth_gen_cmd
-
-- name: Register LDAP authenticator password with Ansible
-  set_fact:
-    ldap_auth_passwd: "{{ ldap_auth_gen_cmd.stdout }}"
- 
 - name: Hash the LDAP authenticator password
   shell: slappasswd -s "{{ ldap_auth_passwd }}"
   register: ldap_auth_hash_cmd
-
 - name: Register LDAP authenticator password hash with Ansible
   set_fact:
     ldap_auth_passwd_hash: "{{ ldap_auth_hash_cmd.stdout }}"
