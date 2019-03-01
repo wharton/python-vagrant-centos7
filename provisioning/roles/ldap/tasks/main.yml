@@ -165,6 +165,27 @@
   with_items:
     - { line: 'SLAPD_URLS="ldapi:/// ldap:/// ldaps:///"' }
 
+- name: Configure rsyslog to do LDAP logging
+  lineinfile:
+    dest: /etc/rsyslog.conf
+    line: "{{ item.line }}"
+  with_items:
+    - { line: "# LDAP logs to facility LOCAL4 by default" }
+    - { line: 'local4.*                                                /var/log/ldap.log' }
+
+- name: Create LDAP logfile
+  file:
+    path: /var/log/ldap.log
+    owner: ldap
+    group: ldap
+    mode: "g-rwx,o-rwx"
+    state: touch
+
+- name: Restart rsyslogd
+  service:
+    name: rsyslog
+    state: restarted
+
 - name: Enable and start the OpenLDAP slapd server
   service:
     name: slapd
