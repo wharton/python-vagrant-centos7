@@ -29,9 +29,9 @@ Django 1.11 or greater is recommended at the time of this writing for new projec
 
 ### Linux
 
-* VirtualBox 5.2.22 can be downloaded here: https://www.virtualbox.org/wiki/Linux_Downloads
+* VirtualBox 6.0.4 can be downloaded here: https://www.virtualbox.org/wiki/Linux_Downloads
     * Builds are provided for Debian, Ubuntu, openSUSE, Fedora, Oracle Linux, CentOS/RHEL, and vanilla Linux.
-* Vagrant 2.2.2 can be downloaded here: https://www.vagrantup.com/downloads.html
+* Vagrant 2.2.4 can be downloaded here: https://www.vagrantup.com/downloads.html
     * Builds are provided for Debian/Ubuntu, CentOS/RHEL, Arch, and vanilla Linux.
 * On newer machines, ensure that you have virtualization enabled in BIOS (duckduckgo it for your machine's model).
 
@@ -78,7 +78,7 @@ Replace the the `vagrant up` line from above with the following.
 $ vagrant up --provider=virtualbox 
 ```
 
-Sit back, let the installation complete.
+Sit back, and let the installation complete.
 
 
 * You can also add the host name to your computer's `hosts` file. Your `hosts` file should be located at:
@@ -118,7 +118,7 @@ The Vagrant box comes with PostgreSQL 9.6. The `vagrant` user is set up as a Pos
 
 ```
 $ psql
-psql (10.0)
+psql (10.7)
 Type "help" for help.
 
 vagrant=# \?
