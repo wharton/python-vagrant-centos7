@@ -1,0 +1,3 @@
+set_flags DB_LOG_AUTOREMOVE
+set_lk_max_locks 16384
+set_lk_max_objects 16384
