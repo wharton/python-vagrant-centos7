@@ -25,6 +25,7 @@
     # - { role: redis, tags: ['cache', 'redis'] }
     # - { role: httpd, tags: ['httpd'] }
     # - { role: httpd_mod_wsgi, tags: ['python', 'httpd'] }
+    # - { role: ldap, tags: ['ldap'] }
 
     ################################################
     # NodeJS can be added as well, but is best run #
