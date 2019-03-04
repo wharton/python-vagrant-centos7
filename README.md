@@ -23,8 +23,8 @@ Django 1.11 or greater is recommended at the time of this writing for new projec
 
 ### Mac
 
-* Tested with VirtualBox 5.2.22: https://download.virtualbox.org/virtualbox/5.2.22/VirtualBox-5.2.22-126460-OSX.dmg
-* Tested with Vagrant 2.2.2: https://releases.hashicorp.com/vagrant/2.2.2/vagrant_2.2.2_x86_64.dmg
+* Tested with VirtualBox 6.0.4: https://download.virtualbox.org/virtualbox/6.0.4/VirtualBox-6.0.4-128413-OSX.dmg
+* Tested with Vagrant 2.2.4: https://releases.hashicorp.com/vagrant/2.2.4/vagrant_2.2.4_x86_64.dmg
 * Git is required: http://git-scm.com/downloads
 
 ### Linux
