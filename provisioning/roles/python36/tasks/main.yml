@@ -58,7 +58,7 @@
               fn_workon "${1}"
 
               # Get the latest pip
-              echo "Upgradging to latest pip..."
+              echo "Upgrading to latest pip..."
               pip install --quiet --upgrade pip
           fi
       }
