@@ -98,6 +98,6 @@
           COMPREPLY=($(compgen -W "$(ls $VENV_HOME)"))
       }
 
-      complete -F _venv_completions() workon
-      complete -F _venv_completions() cdvirtualenv
-      complete -F _venv_completions() rmvirtualenv
+      complete -F _venv_completions workon
+      complete -F _venv_completions cdvirtualenv
+      complete -F _venv_completions rmvirtualenv
