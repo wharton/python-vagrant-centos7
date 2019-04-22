@@ -18,6 +18,7 @@
     block: |
       export VENV_HOME=~/.venvs
       export VENV_PYTHON=/usr/bin/python3.6
+
       fn_workon() {
           if [ -f "${VENV_HOME}/${1}/bin/activate" ]; then
               export VENV_CURRENT="${VENV_HOME}/${1}"
@@ -39,6 +40,7 @@
           fi
       }
       alias workon=fn_workon
+
       fn_mkvirtualenv() {
           if [ -z "${VENV_HOME}" ]; then
               echo "VENV_HOME is not set; we don't know where to create your venv."
@@ -63,6 +65,7 @@
           fi
       }
       alias mkvirtualenv=fn_mkvirtualenv
+
       fn_rmvirtualenv() {
           if [ -z "${VENV_HOME}" ]; then
               echo "VENV_HOME is not set; not removing."
@@ -74,6 +77,7 @@
           fi
       }
       alias rmvirtualenv=fn_rmvirtualenv
+
       fn_lsvirtualenv() {
           if [ -z "${VENV_HOME}" ]; then
               echo "VENV_HOME is not set; can not show venvs."
@@ -82,7 +86,18 @@
           fi
       }
       alias lsvirtualenv=fn_lsvirtualenv
+
       fn_cdvirtualenv() {
           cd "${VENV_CURRENT}"
       }
       alias cdvirtualenv=fn_cdvirtualenv
+
+      # Tab Completions
+      _venv_completions()
+      {
+          COMPREPLY=($(compgen -W "$(ls $VENV_HOME)"))
+      }
+
+      complete -F _venv_completions() workon
+      complete -F _venv_completions() cdvirtualenv
+      complete -F _venv_completions() rmvirtualenv
