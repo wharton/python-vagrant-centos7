@@ -3,9 +3,15 @@
   yum:
     name: "@Development tools"
     state: present
-- name: Install vim, vind-utils, and dependencies for pip installs with yum
+- name: Remove CentOS git; we'll install git 2.x below
   yum: 
     name: 
+      - git
+    state: absent
+- name: Install git, vim, vind-utils, and dependencies for pip installs with yum
+  yum: 
+    name: 
+      - git2u
       - vim
       - bind-utils
       - zlib-devel
@@ -19,3 +25,8 @@
       - tmux
       - libmemcached-devel
     state: present
+- name: Install bash completion for git
+  get_url:
+    url: https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash
+    dest: /etc/bash_completion.d/git
+    mode: '0644'

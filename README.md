@@ -15,23 +15,22 @@ Django 1.11 or greater is recommended at the time of this writing for new projec
 
 ### Windows
 
-* Tested with VirtualBox 6.0.4: https://download.virtualbox.org/virtualbox/6.0.4/VirtualBox-6.0.4-128413-Win.exe
-* Tested with Vagrant 2.2.4: https://releases.hashicorp.com/vagrant/2.2.4/vagrant_2.2.4_x86_64.msi
-* Git Bash is highly recommended, not the Windows Command Prompt (cmd.exe): https://git-for-windows.github.io/
-    * In Git Bash, click the diamond shaped multi-colored icon in the upper left of the window, OPTIONS. You may want to go through the option list to increase your default window size, set up copy/paste shortcuts, and set up mouse selection for copy/paste.
+* Tested with VirtualBox 6.0.8: https://download.virtualbox.org/virtualbox/6.0.8/VirtualBox-6.0.8-130520-Win.exe
+* Tested with Vagrant 2.2.5: https://releases.hashicorp.com/vagrant/2.2.5/vagrant_2.2.5_x86_64.msi
+* Git Bash is highly recommended (instead of the Windows Command Prompt, cmd.exe), which comes with Git for Windows: https://gitforwindows.org/
 * For best performance, ensure that you have virtualization enabled in BIOS (Google it for your machine's model).
 
 ### Mac
 
-* Tested with VirtualBox 6.0.4: https://download.virtualbox.org/virtualbox/6.0.4/VirtualBox-6.0.4-128413-OSX.dmg
-* Tested with Vagrant 2.2.4: https://releases.hashicorp.com/vagrant/2.2.4/vagrant_2.2.4_x86_64.dmg
+* Tested with VirtualBox 6.0.8: https://download.virtualbox.org/virtualbox/6.0.8/VirtualBox-6.0.8-130520-OSX.dmg
+* Tested with Vagrant 2.2.5: https://releases.hashicorp.com/vagrant/2.2.5/vagrant_2.2.5_x86_64.dmg
 * Git is required: http://git-scm.com/downloads
 
 ### Linux
 
-* VirtualBox 6.0.4 can be downloaded here: https://www.virtualbox.org/wiki/Linux_Downloads
+* VirtualBox 6.0.8 can be downloaded here: https://www.virtualbox.org/wiki/Linux_Downloads
     * Builds are provided for Debian, Ubuntu, openSUSE, Fedora, Oracle Linux, CentOS/RHEL, and vanilla Linux.
-* Vagrant 2.2.4 can be downloaded here: https://www.vagrantup.com/downloads.html
+* Vagrant 2.2.5 can be downloaded here: https://www.vagrantup.com/downloads.html
     * Builds are provided for Debian/Ubuntu, CentOS/RHEL, Arch, and vanilla Linux.
 * On newer machines, ensure that you have virtualization enabled in BIOS (duckduckgo it for your machine's model).
 
