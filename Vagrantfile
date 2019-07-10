@@ -3,7 +3,7 @@ Vagrant.configure("2") do |config|
     vm_name = 'default'
     vagrant_arg = ARGV[0]
     config.vm.box = "bento/centos-7.6"
-    config.vm.box_version = "201812.27.0"
+    config.vm.box_version = "201906.17.0"
     config.vm.synced_folder ".", "/vagrant", id: "vagrant-root", :mount_options => ["dmode=777","fmode=777"]
 
     # Guest VM settings
