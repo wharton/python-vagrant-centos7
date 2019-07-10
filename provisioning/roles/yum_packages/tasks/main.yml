@@ -25,3 +25,8 @@
       - tmux
       - libmemcached-devel
     state: present
+- name: Install bash completion for git
+  get_url:
+    url: https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash
+    dest: /etc/bash_completion.d/git
+    mode: '0644'
