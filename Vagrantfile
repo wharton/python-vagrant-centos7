@@ -3,7 +3,7 @@ Vagrant.configure("2") do |config|
     vm_name = 'default'
     vagrant_arg = ARGV[0]
     config.vm.box = "bento/centos-7.6"
-    config.vm.box_version = "201906.17.0"
+    config.vm.box_version = "201907.24.0"
     config.vm.synced_folder ".", "/vagrant", id: "vagrant-root", :mount_options => ["dmode=777","fmode=777"]
 
     # Guest VM settings
@@ -14,6 +14,7 @@ Vagrant.configure("2") do |config|
         v.customize ["modifyvm", :id, "--vram", "12"]
         v.customize ["modifyvm", :id, "--ioapic", "on"]
         v.customize ["modifyvm", :id, "--audio", "none"]
+        v.customize ["setextradata", :id, "VBoxInternal2/SharedFoldersEnableSymlinksCreate/v-root", "1"]
         v.name = "python-vagrant-centos7"
     end
 
