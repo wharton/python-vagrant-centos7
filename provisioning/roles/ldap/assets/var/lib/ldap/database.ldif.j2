@@ -1,0 +1,73 @@
+dn: {{ ldap_base_dn }}
+dc: wrds
+objectClass: top
+objectClass: domain
+structuralObjectClass: domain
+
+dn: {{ ldap_user_ou }}
+ou: People
+objectClass: top
+objectClass: organizationalUnit
+structuralObjectClass: organizationalUnit
+
+dn: {{ ldap_group_ou }}
+ou: Group
+objectClass: top
+objectClass: organizationalUnit
+structuralObjectClass: organizationalUnit
+
+dn: {{ ldap_auth_dn }}
+objectClass: person
+cn: Authenticator
+sn: Authenticator
+description: Used for authentication to LDAP
+structuralObjectClass: person
+userPassword: {{ ldap_auth_passwd_hash }}
+
+dn: cn=users,{{ ldap_group_ou }}
+objectClass: posixGroup
+objectClass: top
+cn: users
+gidNumber: 1001
+structuralObjectClass: posixGroup
+
+dn: cn=disabled,{{ ldap_group_ou }}
+objectClass: posixGroup
+objectClass: top
+cn: disabled
+gidNumber: 1002
+memberUid: user1001
+memberUid: user1002
+structuralObjectClass: posixGroup
+
+dn: uid=user1001,{{ ldap_user_ou }}
+uid: user1001
+cn: User 1001
+objectClass: account
+objectClass: posixAccount
+objectClass: top
+objectClass: shadowAccount
+userPassword:: e2NyeXB0fSo=
+shadowLastChange: 11920
+loginShell: /bin/false
+uidNumber: 1001
+gidNumber: 1001
+homeDirectory: /home/users/user1001
+gecos: User 1001
+structuralObjectClass: account
+
+dn: uid=user1002,{{ ldap_user_ou }} 
+uid: user1002
+cn: User 1002
+objectClass: account
+objectClass: posixAccount
+objectClass: top
+objectClass: shadowAccount
+userPassword:: e2NyeXB0fSo=
+shadowLastChange: 11920
+loginShell: /bin/false
+uidNumber: 1001
+gidNumber: 1001
+homeDirectory: /home/users/user1002
+gecos: User 1002
+structuralObjectClass: account

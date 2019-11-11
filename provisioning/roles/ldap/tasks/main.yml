@@ -1,0 +1,190 @@
+---
+- name: Set the LDAP base DN
+  set_fact:
+    ldap_base_dn:  "dc=wrds,dc=wharton,dc=upenn,dc=edu"
+ 
+- name: Set LDAP user, group, and management structure
+  set_fact:
+    ldap_user_ou:  "ou=People,{{ ldap_base_dn }}"
+    ldap_group_ou: "ou=Group,{{ ldap_base_dn }}"
+    ldap_mgr_dn:   "cn=ldapmgr,{{ ldap_base_dn }}"
+    ldap_auth_dn:  "cn=authenticator,{{ ldap_base_dn }}"
+
+- name: Install OpenLDAP servers package
+  yum:
+    name: openldap-servers
+    state: present
+
+- name: Install OpenLDAP devel package
+  yum:
+    name: openldap-devel
+    state: present
+
+- name: Install OpenLDAP clients package
+  yum:
+    name: openldap-clients
+    state: present
+
+- name: Generate a self-signed OpenSSL certificate for LDAP
+  become: yes
+  block:
+    - pip:
+        name: pyOpenSSL
+    - openssl_privatekey:
+        path: /etc/openldap/certs/openldap.pem
+    - openssl_csr:
+        path: /etc/openldap/certs/openldap.csr
+        privatekey_path: /etc/openldap/certs/openldap.pem
+        common_name: "{{ ansible_hostname }}"
+    - openssl_certificate:
+        path: /etc/openldap/certs/openldap.crt
+        privatekey_path: /etc/openldap/certs/openldap.pem
+        csr_path: /etc/openldap/certs/openldap.csr
+        provider: selfsigned
+
+- name: Ensure slapd daemon is not running
+  service:
+    name: slapd
+    state: stopped
+
+- name: Copy LDAP database configuration
+  copy:
+    src: ../assets/var/lib/ldap/DB_CONFIG
+    dest: /var/lib/ldap/DB_CONFIG
+    mode: 0600
+  
+- name: Generate random password for LDAP manager account
+  vars:
+    ldap_passwd: "{{ lookup('password', '/dev/null') }}"
+  set_fact: 
+      ldap_mgr_passwd: "{{ ldap_passwd }}"
+- name: Generate random password for LDAP authenticator account
+  vars:
+    ldap_passwd: "{{ lookup('password', '/dev/null') }}"
+  set_fact:
+      ldap_auth_passwd: "{{ ldap_passwd }}"
+
+- name: Hash the LDAP manager password
+  shell: slappasswd -s "{{ ldap_mgr_passwd }}"
+  register: ldap_mgr_hash_cmd
+- name: Register LDAP manager password hash with Ansible
+  set_fact:
+    ldap_mgr_passwd_hash: "{{ ldap_mgr_hash_cmd.stdout }}"
+
+- name: Dump LDAP manager password
+  debug:
+    var: ldap_mgr_passwd
+- name: Dump LDAP manager password hash
+  debug:
+    var: ldap_mgr_passwd_hash
+
+- name: Hash the LDAP authenticator password
+  shell: slappasswd -s "{{ ldap_auth_passwd }}"
+  register: ldap_auth_hash_cmd
+- name: Register LDAP authenticator password hash with Ansible
+  set_fact:
+    ldap_auth_passwd_hash: "{{ ldap_auth_hash_cmd.stdout }}"
+
+- name: Dump LDAP authenticator password
+  debug:
+    var: ldap_auth_passwd
+- name: Dump LDAP authenticator password hash
+  debug:
+    var: ldap_auth_passwd_hash
+
+- name: Destroy existing LDAP database directory
+  file:
+    path: /var/lib/ldap
+    state: absent
+    
+- name: Destroy existing LDAP server configuration directory
+  file:
+    path: /etc/openldap/slapd.d
+    state: absent
+
+- name: Create new LDAP database directory
+  file:
+    path: /var/lib/ldap
+    state: directory
+    owner: ldap
+    group: ldap
+    mode: 0700
+
+- name: Copy LDAP database configuration
+  copy:
+    src: ../assets/var/lib/ldap/DB_CONFIG
+    dest: /var/lib/ldap/DB_CONFIG
+    mode: 0600
+
+- name: Copy LDAP server configuration template
+  template:
+    src: ../assets/etc/openldap/slapd.conf.j2
+    dest: /etc/openldap/slapd.conf
+    mode: 0600
+    owner: ldap
+
+- name: Copy LDAP server example database template
+  template:
+    src: ../assets/var/lib/ldap/database.ldif.j2
+    dest: /var/lib/ldap/database.ldif
+    mode: 0600
+    owner: ldap
+
+- name: Initialize LDAP database (also creates /etc/openldap/slapd.d from config file)
+  shell: slapadd -f /etc/openldap/slapd.conf -l /var/lib/ldap/database.ldif
+  become: yes
+  become_user: root
+
+- name: Set permissions on LDAP database
+  file: 
+    path: /var/lib/ldap
+    owner: ldap
+    group: ldap
+    recurse: yes
+    mode: "g-rwx,o-rwx" 
+
+- name: Set permissions on LDAP certs directory
+  file:
+    path: /etc/openldap/certs
+    owner: ldap
+    group: ldap
+    recurse: yes
+    mode: "g-rwx,o-rwx"
+
+- name: Make sure LDAP will listen on secure port
+  lineinfile:
+    dest: /etc/sysconfig/slapd
+    line: "{{ item.line }}"
+  with_items:
+    - { line: 'SLAPD_URLS="ldapi:/// ldap:/// ldaps:///"' }
+
+- name: Configure rsyslog to do LDAP logging
+  lineinfile:
+    dest: /etc/rsyslog.conf
+    line: "{{ item.line }}"
+  with_items:
+    - { line: "# LDAP logs to facility LOCAL4 by default" }
+    - { line: 'local4.*                                                /var/log/ldap.log' }
+
+- name: Create LDAP logfile
+  file:
+    path: /var/log/ldap.log
+    owner: ldap
+    group: ldap
+    mode: "g-rwx,o-rwx"
+    state: touch
+
+- name: Restart rsyslogd
+  service:
+    name: rsyslog
+    state: restarted
+
+- name: Enable and start the OpenLDAP slapd server
+  service:
+    name: slapd
+    enabled: yes
+    state: started
+
+- name: Search the LDAP database to ensure it is working
+  command: /usr/bin/ldapsearch -x -h localhost -w "{{ ldap_auth_passwd }}" -D "{{ ldap_auth_dn }}" -b "{{ ldap_base_dn }}"
+
