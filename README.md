@@ -14,8 +14,8 @@ Django 1.11 or greater is recommended at the time of this writing for new projec
 
 ### Windows
 
-* Tested with VirtualBox 6.0.8: https://download.virtualbox.org/virtualbox/6.0.8/VirtualBox-6.0.8-130520-Win.exe
-* Tested with Vagrant 2.2.5: https://releases.hashicorp.com/vagrant/2.2.5/vagrant_2.2.5_x86_64.msi
+* Tested with VirtualBox 6.1.4: https://download.virtualbox.org/virtualbox/6.1.4/VirtualBox-6.1.4-136177-Win.exe
+* Tested with Vagrant 2.2.7: https://releases.hashicorp.com/vagrant/2.2.7/vagrant_2.2.7_x86_64.msi
 * Git Bash is highly recommended (instead of the Windows Command Prompt, cmd.exe), which comes with Git for Windows: https://gitforwindows.org/
 * For best performance, ensure that you have virtualization enabled in BIOS (Google it for your machine's model).
 
