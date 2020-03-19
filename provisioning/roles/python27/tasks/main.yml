@@ -7,7 +7,7 @@
 # Pygments for system wide syntax highlighting with 'ccat' command
 - name: Install Pygments for Python 2.7
   pip:
-    name: Pygments
+    name: pygments<2.6
 
 - name: Set 'ccat' alias in global bashrc
   lineinfile:
