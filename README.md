@@ -1,5 +1,11 @@
 # A CentOS 7.6 Vagrant Box with Python 3.6 via Ansible
 
+## Aging Repository Notice
+
+This repository has not been updated in quite some time. Most developers on our team have moved on to different forms of development: local, WSL-2 Ubuntu, on-server, and Docker. Python 3.6 will shortly be end-of-life. We keep this repository here for reference, but recommend looking for other development solutions.
+
+## What's in the Box
+
 * Apache 2.4, with mod_wsgi for running Django
 * Microsoft ODBC & FreeTDS drivers for MS SQL Server
 * PostgreSQL Drivers & Server
